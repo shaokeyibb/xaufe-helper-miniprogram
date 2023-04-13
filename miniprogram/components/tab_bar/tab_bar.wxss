@@ -2,7 +2,7 @@
 .tab {
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 20px;
 }
 
 .tab___content {
