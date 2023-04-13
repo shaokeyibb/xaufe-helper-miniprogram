@@ -1,0 +1,11 @@
+{
+  "name": "xaufe-helper-miniprogram",
+  "version": "1.0.0",
+  "description": "智慧仙财小程序",
+  "repository": "https://github.com/shaokeyibb/xaufe-helper-miniprogram",
+  "author": "HikariLan",
+  "license": "AGPLv3",
+  "dependencies": {
+    "miniprogram-table-component": "^1.1.0"
+  }
+}
