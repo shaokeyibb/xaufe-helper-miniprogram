@@ -5,7 +5,17 @@ Page({
    * Page initial data
    */
   data: {
-
+    variants: [
+      {
+        "title": "教务管理",
+        "entries": [
+          {
+            "title": "学生成绩查询",
+            "url": "/pages/jwgl/transcript/transcript"
+          }
+        ]
+      }
+    ]
   },
 
   /**
@@ -19,7 +29,9 @@ Page({
    * Lifecycle function--Called when page is initially rendered
    */
   onReady() {
-
+    wx.setNavigationBarTitle({
+      title: '应用中心'
+    })
   },
 
   /**

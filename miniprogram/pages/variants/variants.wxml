@@ -1,2 +1,10 @@
 <!--pages/variants/variants.wxml-->
-<text>pages/variants/variants.wxml</text>
+<view class="page-view">
+  <block wx:for="{{variants}}" wx:for-index="variIdx" wx:for-item="variItem" wx:key="variIdx">
+    {{variItem.title}}
+    <block wx:for="{{variItem.entries}}" wx:key="index">
+      <navigator open-type="navigate" url="{{item.url}}"><text style="display: block">- {{index}}: {{item.title}}</text></navigator>
+    </block>
+  </block>
+  <tab-bar></tab-bar>
+</view>
