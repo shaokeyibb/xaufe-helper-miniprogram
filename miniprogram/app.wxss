@@ -1,0 +1,14 @@
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+.page-view{
+  height: 100vh;
+  background-color: #F5F6FA;
+}

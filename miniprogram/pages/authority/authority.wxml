@@ -1,0 +1,26 @@
+<!--pages/authority/authority.wxml-->
+<view class="page-view">
+  <view class="title">
+    <text>登录到 西安财经大学统一身份认证系统</text>
+  </view>
+  <view class="container">
+    <form bindsubmit="onLogin">
+      <view class="form-item">
+        <input name="username" placeholder="学号/工号" value="{{username}}" />
+      </view>
+      <view class="form-item">
+        <input name="password" password="true" placeholder="密码" value="{{password}}" bindinput="onInputPassword"/>
+      </view>
+      <view class="form-item captcha-box">
+        <input class="captcha-box___input" name="captcha" placeholder="验证码" />
+        <image class="captcha-box___captcha" mode="aspectFit" src="{{captcha}}" bindtap="updateCaptcha"></image>
+      </view>
+      <view class="actions">
+        <button form-type="submit" type="primary">登录</button>
+      </view>
+    </form>
+  </view>
+  <view class="footbar">
+    <text>Tips：智慧仙财小程序不会在云端存储您的任何凭据数据，所有数据均在本地储存并已进行加密。</text>
+  </view>
+</view>

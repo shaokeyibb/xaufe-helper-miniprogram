@@ -1,0 +1,37 @@
+<!--pages/space/space.wxml-->
+<view class="page-view">
+  <view class="personal-info-card">
+    <block wx:if="{{!personalInfomation.XM}}">
+      <view class="personal-info-card___text">
+        <text>---</text>
+        <text>---</text>
+      </view>
+      <image style="background-color: #FFF;" mode="aspectFit"></image>
+    </block>
+    <block wx:else>
+      <view class="personal-info-card___text">
+        <text>{{personalInfomation.XM}}</text>
+        <text>{{personalInfomation.XH}}</text>
+      </view>
+      <image src="{{personalInfomation.YHTX}}" mode="aspectFit"></image>
+    </block>
+  </view>
+  <block wx:if="{{isLogin}}">
+    <button type="warn" bindtap="onHitLogout">注销</button>
+  </block>
+  <block wx:else>
+    <button type="primary" bindtap="onHitLogin">登录</button>
+  </block>
+  <view style="margin: 30rpx 0;">
+    <view>
+      <text>TGC: {{tgc}}</text>
+    </view>
+    <view>
+      <text>Token:{{myToken}}</text>
+    </view>
+    <view>
+      <text>Token:{{jwglToken}}</text>
+    </view>
+  </view>
+  <tab-bar></tab-bar>
+</view>

@@ -1,0 +1,18 @@
+/* components/tab_bar/tab_bar.wxss */
+.tab {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.tab___content {
+  display: flex;
+  justify-content: space-around;
+
+  height: 50rpx;
+}
+
+.tab___content__item{
+  text-align:center;
+  width: 100%;
+}

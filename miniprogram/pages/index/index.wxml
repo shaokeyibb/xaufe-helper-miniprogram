@@ -1,0 +1,4 @@
+<!--pages/index/index.wxml-->
+<view class="page-view">
+  <tab-bar></tab-bar>
+</view>

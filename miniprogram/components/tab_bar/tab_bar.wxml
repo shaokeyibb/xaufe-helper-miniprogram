@@ -1,0 +1,8 @@
+<!--components/tab_bar/tab_bar.wxml-->
+<view class="tab">
+  <view class="tab___content">
+    <navigator class="tab___content__item" open-type="redirect" url="/pages/index/index">主页</navigator>
+    <navigator class="tab___content__item" open-type="redirect" url="/pages/variants/variants">应用中心</navigator>
+    <navigator class="tab___content__item" open-type="redirect" url="/pages/space/space">我的</navigator>
+  </view>
+</view>
