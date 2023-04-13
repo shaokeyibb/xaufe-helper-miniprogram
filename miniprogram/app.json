@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/authority/authority",
     "pages/space/space",
-    "pages/variants/variants"
+    "pages/variants/variants",
+    "pages/jwgl/transcript/transcript"
   ],
   "window": {
     "backgroundTextStyle": "light",
