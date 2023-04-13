@@ -6,17 +6,21 @@ const mySolutionCookieRegex = /CJMHJSESSIONID=([a-zA-Z0-9\-]+)/g
 // This is just for temp use, should not been saving permantly.
 let mySolutionToken: string | undefined = undefined
 
+export async function getOrRequireTokenCookie(redirect: boolean = true): Promise<string> {
+  return `CJMHJSESSIONID=${await getOrRequireToken(redirect)};`
+}
+
 export async function getOrRequireToken(redirect: boolean = true): Promise<string> {
   return mySolutionToken = (mySolutionToken ?? await requireToken(redirect))
 }
 
 async function requireToken(redirect: boolean = true): Promise<string> {
-  const tgc = tgcModule.checkAndGetTGC(redirect)
+  const tgc = tgcModule.checkAndGetTGCCookie(redirect)
   const result = await relayModule.request({
     url: "https://cas.xaufe.edu.cn/login?service=http://my.xaufe.edu.cn/cjmh/casAuth?redirectUrl=my.xaufe.edu.cn/newcjmh",
     method: "GET",
     header: {
-      "Cookie": "TGC=" + await tgc,
+      "Cookie": await tgc,
     }
   })
   const token = (new RegExp(mySolutionCookieRegex).exec(result.request.headers["Cookie"]) ?? [])[1]

@@ -7,17 +7,22 @@ const jwglSolutionSessionCookieRegex = /JSESSIONID=([a-zA-Z0-9\-]+)/g
 // This is just for temp use, should not been saving permantly.
 let jwglSolutionToken: Record<string, string> | undefined = undefined
 
+export async function getOrRequireTokenCookie(redirect: boolean = true): Promise<string> {
+  const tokens = await getOrRequireToken(redirect);
+  return `route=${tokens["route"]}; JSESSIONID=${tokens["JSESSIONID"]};`
+}
+
 export async function getOrRequireToken(redirect: boolean = true): Promise<Record<string, string>> {
   return jwglSolutionToken = (jwglSolutionToken ?? await requireToken(redirect))
 }
 
 async function requireToken(redirect: boolean = true): Promise<Record<string, string>> {
-  const tgc = tgcModule.checkAndGetTGC(redirect)
+  const tgc = tgcModule.checkAndGetTGCCookie(redirect)
   const result = await relayModule.request({
     url: "https://cas.xaufe.edu.cn/login?service=http%3A%2F%2Fjwgl.xaufe.edu.cn%2Fsso%2Fddlogin",
     method: "GET",
     header: {
-      "Cookie": "TGC=" + await tgc,
+      "Cookie": await tgc,
     }
   })
   

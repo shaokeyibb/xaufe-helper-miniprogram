@@ -103,7 +103,7 @@ Page({
 
   onHitLogin() {
     wx.redirectTo({
-      url: "/pages/authority/authority"
+      url: "/pages/authority/authority?to="+encodeURI("/pages/space/space")
     })
   },
 
@@ -119,7 +119,7 @@ Page({
       url: "http://my.xaufe.edu.cn/cjmh/xsindex/xsjcxx?_t=" + Date.now().toString(),
       method: "GET",
       header: {
-        Cookie: "CJMHJSESSIONID=" + await space_myModule.getOrRequireToken()
+        "Cookie": await space_myModule.getOrRequireTokenCookie()
       },
       dataType: "json"
     })
