@@ -1,4 +1,8 @@
 <!--pages/index/index.wxml-->
 <view class="page-view">
+  <view style="display: flex; justify-content: center; padding: 10rpx;">
+    <icon type="warn"></icon>
+    <text>开发中界面，仅供评估</text>
+  </view>
   <tab-bar></tab-bar>
 </view>
