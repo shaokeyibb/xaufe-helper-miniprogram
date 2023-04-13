@@ -1,1 +1,26 @@
 /* pages/jwgl/transcript/transcript.wxss */
+.form {
+  padding: 14px 0;
+  height: 35vh;
+}
+
+.form___item {
+  padding-bottom: 20px;
+}
+
+.form___item__title{
+  height: 30px;
+  justify-content: center;
+
+  padding: 0 14px;
+}
+
+.form___item__picker{
+  height: 50px;
+  width: 100%;
+
+  line-height: 50px;
+  padding: 0 14px;
+
+  background-color: white;
+}

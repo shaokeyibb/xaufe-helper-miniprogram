@@ -1,2 +1,25 @@
 <!--pages/jwgl/transcript/transcript.wxml-->
-<text>pages/jwgl/transcript/transcript.wxml</text>
+<view class="page-view">
+  <view class="form">
+    <form bindsubmit="onSubmitQuery">
+      <view class="form___item">
+        <view class="form___item__title">学年</view>
+        <picker name="xnm" header-text="选择学年" mode="selector" range="{{years}}" range-key="key" value="{{selectedYearIdx}}" bindchange="onYearChange">
+          <view class="form___item__picker">
+            当前选择：{{years[selectedYearIdx].key}}
+          </view>
+        </picker>
+      </view>
+      <view class="form___item">
+        <view class="form___item__title">学期</view>
+        <picker name="xqm" header-text="选择学期" mode="selector" range="{{terms}}" range-key="key" value="{{selectedTermIdx}}" bindchange="onTermChange">
+          <view class="form___item__picker">
+            当前选择：{{terms[selectedTermIdx].key}}
+          </view>
+        </picker>
+      </view>
+      <button form-type="submit" type="primary">查询</button>
+    </form>
+  </view>
+  <table-view headers="{{tableHeader}}" data="{{tableData}}" border="{{true}}" height="50vh"></table-view>
+</view>
