@@ -81,7 +81,9 @@ Page({
     ],
 
     selectedYearIdx: 0,
-    selectedTermIdx: 0
+    selectedTermIdx: 0,
+
+    tableData: []
   },
 
   /**
