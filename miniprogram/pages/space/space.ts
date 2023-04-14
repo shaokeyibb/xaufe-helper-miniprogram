@@ -139,5 +139,11 @@ Page({
       dataType: "json"
     })
     return result.body.info
+  },
+
+  onHitMenu(e:any){
+    wx.navigateTo({
+      url: e.currentTarget.dataset.to
+    })
   }
 })

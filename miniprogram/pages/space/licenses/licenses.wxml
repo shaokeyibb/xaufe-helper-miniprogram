@@ -1,0 +1,2 @@
+<!--pages/space/licenses/licenses.wxml-->
+<rich-text nodes="{{nodes}}"></rich-text>

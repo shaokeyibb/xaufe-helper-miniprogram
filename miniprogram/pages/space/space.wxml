@@ -22,5 +22,11 @@
   <block wx:else>
     <button type="primary" bindtap="onHitLogin">登录</button>
   </block>
+  <view class="menus">
+    <view class="menus___item" bindtap="onHitMenu" data-to="/pages/space/licenses/licenses">
+      <svg-icon class="menus___item__icon" name="mdi-light:rss" size="50rpx" />
+      <text class="menus___item__text">开放源代码许可</text>
+    </view>
+  </view>
   <tab-bar currentKey="space" />
 </view>

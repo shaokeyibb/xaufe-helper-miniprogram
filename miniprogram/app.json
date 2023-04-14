@@ -4,7 +4,8 @@
     "pages/authority/authority",
     "pages/space/space",
     "pages/variants/variants",
-    "pages/jwgl/transcript/transcript"
+    "pages/jwgl/transcript/transcript",
+    "pages/space/licenses/licenses"
   ],
   "window": {
     "backgroundTextStyle": "light",

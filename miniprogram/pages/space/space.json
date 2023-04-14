@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "tab-bar": "/components/tab_bar/tab_bar"
+    "tab-bar": "/components/tab_bar/tab_bar",
+    "svg-icon": "../../miniprogram_npm/weapp-svg-icon/index"
   }
 }

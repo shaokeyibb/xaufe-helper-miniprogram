@@ -32,3 +32,22 @@
 
   border-radius: 10%;
 }
+
+.menus{
+  display: flex;
+  flex-direction: column;
+
+  padding: 20rpx;
+}
+
+.menus___item {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding-bottom: 5px;
+}
+
+.menus___item__icon{
+  margin: 3px;
+}
