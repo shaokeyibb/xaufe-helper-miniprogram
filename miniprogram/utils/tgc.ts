@@ -15,11 +15,11 @@ export async function checkAndSaveTGC(res: WechatMiniprogram.RequestSuccessCallb
   return validate;
 }
 
-export async function checkAndGetTGCCookie(redirect: boolean = true): Promise<string> {
-  return `TGC=${await checkAndGetTGC(redirect)};`
+export async function checkAndGetTGCCookie(redirect: boolean = true, to: string | undefined = undefined): Promise<string> {
+  return `TGC=${await checkAndGetTGC(redirect, to)};`
 }
 
-export async function checkAndGetTGC(redirect: boolean = true): Promise<string> {
+export async function checkAndGetTGC(redirect: boolean = true, to: string | undefined = undefined): Promise<string> {
   try {
     const tgc = await getTGCStorage();
     if (await validateTGC(tgc)) {
@@ -31,7 +31,7 @@ export async function checkAndGetTGC(redirect: boolean = true): Promise<string> 
   } catch (e) {
     if (redirect)
       wx.redirectTo({
-        url: '/pages/authority/authority'
+        url: '/pages/authority/authority' + (to ? `?to=${encodeURI(to!)}` : "")
       })
     throw e
   }

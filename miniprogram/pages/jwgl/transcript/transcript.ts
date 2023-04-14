@@ -164,7 +164,7 @@ Page({
         url: "http://jwgl.xaufe.edu.cn/jwglxt/cjcx/cjcx_cxXsgrcj.html?doType=query",
         method: "POST",
         header: {
-          "Cookie": await transcript_jwglModule.getOrRequireTokenCookie(),
+          "Cookie": await transcript_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/transcript/transcript"),
           "Content-Type": "application/x-www-form-urlencoded"
         },
         form: data,

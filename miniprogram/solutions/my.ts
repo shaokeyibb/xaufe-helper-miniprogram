@@ -6,16 +6,16 @@ const mySolutionCookieRegex = /CJMHJSESSIONID=([a-zA-Z0-9\-]+)/g
 // This is just for temp use, should not been saving permantly.
 let mySolutionToken: string | undefined = undefined
 
-export async function getOrRequireTokenCookie(redirect: boolean = true): Promise<string> {
-  return `CJMHJSESSIONID=${await getOrRequireToken(redirect)};`
+export async function getOrRequireTokenCookie(redirect: boolean = true, to: string | undefined = undefined): Promise<string> {
+  return `CJMHJSESSIONID=${await getOrRequireToken(redirect, to)};`
 }
 
-export async function getOrRequireToken(redirect: boolean = true): Promise<string> {
-  return mySolutionToken = (mySolutionToken ?? await requireToken(redirect))
+export async function getOrRequireToken(redirect: boolean = true, to: string | undefined = undefined): Promise<string> {
+  return mySolutionToken = (mySolutionToken ?? await requireToken(redirect, to))
 }
 
-async function requireToken(redirect: boolean = true): Promise<string> {
-  const tgc = tgcModule.checkAndGetTGCCookie(redirect)
+async function requireToken(redirect: boolean = true, to: string | undefined = undefined): Promise<string> {
+  const tgc = tgcModule.checkAndGetTGCCookie(redirect, to)
   const result = await relayModule.request({
     url: "https://cas.xaufe.edu.cn/login?service=http://my.xaufe.edu.cn/cjmh/casAuth?redirectUrl=my.xaufe.edu.cn/newcjmh",
     method: "GET",

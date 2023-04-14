@@ -50,7 +50,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   async onLoad(options) {
-    this.to = options.to ?? ''
+    this.to = options.to ? decodeURI(options.to) : ''
     const session = sessionModule.generateSession();
 
     try {
@@ -170,8 +170,8 @@ Page({
     })
   },
 
-  onInputPassword(){
-    if(this.data.isRememberPassword){
+  onInputPassword() {
+    if (this.data.isRememberPassword) {
       this.setData({
         password: "",
         isRememberPassword: false
