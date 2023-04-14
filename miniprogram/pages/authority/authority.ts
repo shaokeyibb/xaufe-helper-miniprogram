@@ -1,7 +1,7 @@
 // pages/authority/authority.ts
 const sessionModule = require('../../utils/session');
-const encryptModule = require('../../utils/md51.js')
 const tgcModule = require('../../utils/tgc')
+const cryptoModule = require('../../miniprogram_npm/crypto-js/index.js')
 
 const executionCookieRegex = /<input type="hidden" name="execution" value="([a-zA-Z0-9]+)"\/>/g
 const usernameRegex = /^[0-9a-zA-Z]{3,20}$/g;
@@ -107,7 +107,7 @@ Page({
     })
     data = {
       ...data,
-      "password": this.data.isRememberPassword ? data.password : encryptModule.hex_md5(data.password.toUpperCase()),
+      "password": this.data.isRememberPassword ? data.password : cryptoModule.MD5(data.password.toUpperCase()).toString(),
       "_eventId": "submit",
       "execution": await evaluateExecution()
     }

@@ -6,6 +6,7 @@
   "author": "HikariLan",
   "license": "AGPLv3",
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "miniprogram-table-component": "^1.1.0"
   }
 }
