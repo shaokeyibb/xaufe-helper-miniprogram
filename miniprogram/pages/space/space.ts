@@ -34,9 +34,24 @@ Page({
         })
       }
       if (this.data.isLogin) {
-        this.setData({
-          personalInfomation: await this.getPersonalInformation()
-        })
+        try {
+          const personalInfomation = await wx.getStorage({
+            key: "personal_info",
+            encrypt: true
+          })
+          this.setData({
+            personalInfomation: personalInfomation.data
+          })
+        } catch {
+          this.setData({
+            personalInfomation: await this.getPersonalInformation()
+          })
+          wx.setStorage({
+            key: "personal_info",
+            data: this.data.personalInfomation,
+            encrypt: true
+          })
+        }
       }
     } finally {
       wx.hideLoading()
@@ -103,14 +118,18 @@ Page({
 
   onHitLogin() {
     wx.redirectTo({
-      url: "/pages/authority/authority?to="+encodeURI("/pages/space/space")
+      url: "/pages/authority/authority?to=" + encodeURI("/pages/space/space")
     })
   },
 
   async onHitLogout() {
     await space_tgcModule.logoutTGC()
     this.setData({
-      isLogin: false
+      isLogin: false,
+      personalInfomation: {}
+    })
+    wx.removeStorage({
+      key: "personal_info"
     })
   },
 
