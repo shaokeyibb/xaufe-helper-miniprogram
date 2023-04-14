@@ -1,6 +1,7 @@
 // pages/jwgl/transcript/transcript.ts
 const transcript_relayModule = require('../../../utils/relay.js')
 const transcript_jwglModule = require('../../../solutions/jwgl')
+const transcript_dateModule = require('../../../utils/date')
 
 Page({
 
@@ -11,7 +12,7 @@ Page({
     years: [{
       key: "全部",
       value: ""
-    }].concat(Array.from(new Array(new Date().getFullYear() + 1).keys()).slice(1970).map(it => {
+    }].concat(Array.from(new Array(transcript_dateModule.isInSecondTerm() ? new Date().getFullYear() : new Date().getFullYear() + 1).keys()).slice(1970).map(it => {
       return {
         key: `${it} - ${it + 1}`,
         value: it.toString()
@@ -80,8 +81,8 @@ Page({
       }
     ],
 
-    selectedYearIdx: 0,
-    selectedTermIdx: 0,
+    selectedYearIdx: 1,
+    selectedTermIdx: transcript_dateModule.isInSecondTerm() ? 2 : 1,
 
     tableData: []
   },

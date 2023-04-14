@@ -17,3 +17,6 @@ const formatNumber = (n: number) => {
   const s = n.toString()
   return s[1] ? s : '0' + s
 }
+
+const month = new Date().getMonth() + 1
+export const isInSecondTerm = () => month > 1 && month < 9
