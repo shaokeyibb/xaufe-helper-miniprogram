@@ -1,7 +1,6 @@
 const space_relayModule = require('../../utils/relay.js')
 const space_myModule = require("../../solutions/my")
 const space_tgcModule = require("../../utils/tgc")
-const space_jwglModule = require('../../solutions/jwgl')
 
 // pages/space/space.ts
 Page({
@@ -71,14 +70,6 @@ Page({
    * Lifecycle function--Called when page show
    */
   async onShow() {
-    const tgc = space_tgcModule.checkAndGetTGC(false)
-    const myToken = space_myModule.getOrRequireToken(false)
-    const jwglToken = space_jwglModule.getOrRequireToken(false)
-    this.setData({
-      tgc: await tgc,
-      myToken: await myToken,
-      jwglToken: JSON.stringify(await jwglToken)
-    })
   },
 
   /**

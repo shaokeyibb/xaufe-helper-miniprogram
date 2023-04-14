@@ -22,16 +22,5 @@
   <block wx:else>
     <button type="primary" bindtap="onHitLogin">登录</button>
   </block>
-  <view style="margin: 30rpx 0;">
-    <view>
-      <text>TGC: {{tgc}}</text>
-    </view>
-    <view>
-      <text>Token:{{myToken}}</text>
-    </view>
-    <view>
-      <text>Token:{{jwglToken}}</text>
-    </view>
-  </view>
-  <tab-bar currentKey="space"/>
+  <tab-bar currentKey="space" />
 </view>
