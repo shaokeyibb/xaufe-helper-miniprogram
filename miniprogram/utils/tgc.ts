@@ -1,3 +1,6 @@
+const jwglModule = require('../solutions/jwgl')
+const myModule = require('../solutions/my')
+
 const tgcCookieRegex = /TGC=([a-zA-Z0-9\-]+);/g
 const tgcValidateHTMLRegex = /<title>登录成功<\/title>/g
 
@@ -55,6 +58,8 @@ export async function logoutTGC() {
     })
   })
   const clr = clearTGCStorage()
+  jwglModule.clearToken()
+  myModule.clearToken()
   await Promise.all([req, clr])
 }
 

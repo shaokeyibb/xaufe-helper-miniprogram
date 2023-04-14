@@ -16,6 +16,10 @@ export async function getOrRequireToken(redirect: boolean = true, to: string | u
   return jwglSolutionToken = (jwglSolutionToken ?? await requireToken(redirect, to))
 }
 
+export function clearToken(){
+  jwglSolutionToken = undefined
+}
+
 async function requireToken(redirect: boolean = true, to: string | undefined = undefined): Promise<Record<string, string>> {
   const tgc = tgcModule.checkAndGetTGCCookie(redirect, to)
   const result = await relayModule.request({
