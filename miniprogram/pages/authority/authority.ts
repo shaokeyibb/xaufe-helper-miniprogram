@@ -4,7 +4,7 @@ const encryptModule = require('../../utils/md51.js')
 const tgcModule = require('../../utils/tgc')
 
 const executionCookieRegex = /<input type="hidden" name="execution" value="([a-zA-Z0-9]+)"\/>/g
-const usernameRegex = /^[0-9a-zA-Z]{3,20}$/;
+const usernameRegex = /^[0-9a-zA-Z]{3,20}$/g;
 
 async function evaluateExecution(): Promise<string> {
   const session = await sessionModule.getSessionStorage();
