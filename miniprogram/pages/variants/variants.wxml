@@ -6,5 +6,5 @@
       <navigator open-type="navigate" url="{{item.url}}"><text style="display: block">- {{index}}: {{item.title}}</text></navigator>
     </block>
   </block>
-  <tab-bar></tab-bar>
+  <tab-bar currentKey="variants"/>
 </view>

@@ -2,17 +2,29 @@
 .tab {
   position: fixed;
   width: 100%;
-  bottom: 20px;
+  bottom: 10px;
 }
 
 .tab___content {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 
-  height: 50rpx;
+  flex-wrap: nowrap;
 }
 
-.tab___content__item{
-  text-align:center;
-  width: 100%;
+.tab___content__item {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  flex: auto;
+}
+
+.tab___content__item_text {
+  font-size: small;
+}
+
+.tab___content__item_icon{
+  margin: 3px;
 }

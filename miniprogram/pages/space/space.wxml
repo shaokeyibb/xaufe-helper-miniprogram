@@ -33,5 +33,5 @@
       <text>Token:{{jwglToken}}</text>
     </view>
   </view>
-  <tab-bar></tab-bar>
+  <tab-bar currentKey="space"/>
 </view>

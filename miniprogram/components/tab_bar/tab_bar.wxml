@@ -1,8 +1,11 @@
 <!--components/tab_bar/tab_bar.wxml-->
 <view class="tab">
   <view class="tab___content">
-    <navigator class="tab___content__item" open-type="redirect" url="/pages/index/index">主页</navigator>
-    <navigator class="tab___content__item" open-type="redirect" url="/pages/variants/variants">应用中心</navigator>
-    <navigator class="tab___content__item" open-type="redirect" url="/pages/space/space">我的</navigator>
+    <block wx:for="{{tabData}}" wx:key="key">
+      <view class="tab___content__item" bindtap="onHitTab" data-item="{{item}}" style="color: {{item.color}}">
+        <svg-icon class="tab___content__item_icon" name="{{item.icon}}" size="60rpx" color="{{item.color}}"/>
+        <text class="tab___content__item_text">{{item.title}}</text>
+      </view>
+    </block>
   </view>
 </view>
