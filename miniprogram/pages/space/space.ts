@@ -123,6 +123,11 @@ Page({
   },
 
   async onHitLogout() {
+    const userChoose = await wx.showModal({
+      title: "确定要注销吗？",
+      content: "小程序部分功能可能无法使用（如成绩查询）。您仍可在注销后重新登录。"
+    })
+    if (!userChoose.confirm) return
     await space_tgcModule.logoutTGC()
     this.setData({
       isLogin: false,
