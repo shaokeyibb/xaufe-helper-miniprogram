@@ -7,6 +7,7 @@
   "license": "AGPLv3",
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "miniprogram-table-component": "^1.1.0"
+    "miniprogram-table-component": "^1.1.0",
+    "weapp-svg-icon": "^1.0.0"
   }
 }
