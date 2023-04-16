@@ -13,6 +13,11 @@ Page({
             "title": "学生成绩查询",
             "icon": "mdi-light:table",
             "url": "/pages/jwgl/transcript/transcript"
+          },
+          {
+            "title": "考试信息查询",
+            "icon": "mdi-light:script",
+            "url": "/pages/jwgl/examing/examing"
           }
         ]
       }
