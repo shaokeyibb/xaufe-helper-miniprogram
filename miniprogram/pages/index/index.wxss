@@ -1,1 +1,9 @@
 /* pages/index/index.wxss */
+.header-card{
+  margin: 0 10px;
+  padding: 20px;
+
+  background-color:cadetblue;
+
+  border-radius: 10px;
+}
