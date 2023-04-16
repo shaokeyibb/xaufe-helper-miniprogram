@@ -1,7 +1,6 @@
 /* pages/jwgl/transcript/transcript.wxss */
 .form {
   padding: 14px 0;
-  height: 35vh;
 }
 
 .form___item {
@@ -20,6 +19,8 @@
   width: 100%;
 
   line-height: 50px;
+  overflow: hidden;
+
   padding: 0 14px;
 
   background-color: white;

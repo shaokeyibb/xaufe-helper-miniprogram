@@ -21,5 +21,5 @@
       <button form-type="submit" type="primary">查询</button>
     </form>
   </view>
-  <table-view headers="{{tableHeader}}" data="{{tableData}}" border="{{true}}" height="50vh"></table-view>
+  <table-view headers="{{tableHeader}}" data="{{tableData}}" border="{{true}}" height="55vh"></table-view>
 </view>
