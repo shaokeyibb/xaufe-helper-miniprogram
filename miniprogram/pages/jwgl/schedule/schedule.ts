@@ -9,8 +9,8 @@ const zcdRegex = /(\d+)-(\d+)周(\((单|双)\))?/
 // match '1-2'
 const jcsRegex = /(\d+)-(\d+)/
 
-function makeRows(){
-  
+function makeRows() {
+
 }
 
 Page({
@@ -98,11 +98,20 @@ Page({
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad() {
-    this.onSubmitQuery({
-      xnm: this.data.selectedYearIdx,
-      xqm: this.data.selectedTermIdx
-    })
+  async onLoad() {
+    try {
+      this.setData({
+        nodes: (await wx.getStorage({
+          key: "schedule",
+          encrypt: true
+        })).data
+      })
+    } catch {
+      this.onSubmitQuery({
+        xnm: this.data.selectedYearIdx,
+        xqm: this.data.selectedTermIdx
+      })
+    }
   },
 
   /**
@@ -282,7 +291,7 @@ Page({
             name: 'span',
             children: [{
               type: 'text',
-              text: "其他课程：" + specialClasses.map(it=>it.qtkcgs).join(";")
+              text: "其他课程：" + specialClasses.map(it => it.qtkcgs).join(";")
             }]
           }
         ]
@@ -315,8 +324,16 @@ Page({
         dataType: 'json'
       })
 
+      const nodes = this.makeNodes(result.body)
+
       this.setData({
-        nodes: this.makeNodes(result.body)
+        nodes: nodes
+      })
+
+      wx.setStorage({
+        key: "schedule",
+        data: nodes,
+        encrypt: true
       })
 
       wx.hideLoading()

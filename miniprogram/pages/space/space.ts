@@ -127,6 +127,9 @@ Page({
     wx.removeStorage({
       key: "personal_info"
     })
+    wx.removeStorage({
+      key: "schedule"
+    })
   },
 
   async getPersonalInformation(): Promise<PersonalInfomation> {
