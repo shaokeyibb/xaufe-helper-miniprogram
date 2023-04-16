@@ -43,6 +43,7 @@ Component({
    */
   methods: {
     onHitTab(e: any) {
+      if(e.currentTarget.dataset.item.key===this.properties.currentKey)return
       wx.redirectTo({
         url: e.currentTarget.dataset.item.path
       })
