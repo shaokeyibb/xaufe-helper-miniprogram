@@ -94,7 +94,7 @@ Page({
 
   async onLogin(e: any) {
     let data = e.detail.value;
-    if (!new RegExp(usernameRegex).test(data.username) || !data.password) {
+    if (!new RegExp(usernameRegex).test(data.username) || !data.password || !data.captcha) {
       wx.showToast({
         icon: "error",
         title: "数据不正确",
@@ -131,12 +131,14 @@ Page({
           title: '校验中',
           mask: true
         })
-        if (!await tgcModule.checkAndSaveTGC(res)) {
+        try {
+          const checked = await tgcModule.checkAndSaveTGC(res)
+          if (!checked) return
+        } finally {
           wx.showToast({
             icon: "error",
             title: "校验出错",
           })
-          return
         }
         if (this.to) {
           wx.redirectTo({
