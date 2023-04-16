@@ -1,27 +1,31 @@
 <!--pages/space/space.wxml-->
 <view class="page-view">
   <view class="personal-info-card">
-    <block wx:if="{{!personalInfomation.XM}}">
-      <view class="personal-info-card___text">
-        <text>---</text>
-        <text>---</text>
-      </view>
-      <image style="background-color: #FFF;" mode="aspectFit"></image>
-    </block>
-    <block wx:else>
-      <view class="personal-info-card___text">
-        <text>{{personalInfomation.XM}}</text>
-        <text>{{personalInfomation.XH}}</text>
-      </view>
-      <image src="{{personalInfomation.YHTX}}" mode="aspectFit"></image>
-    </block>
+    <view class="personal-info-card___info">
+      <block wx:if="{{!personalInfomation.XM}}">
+        <view class="personal-info-card___info__text">
+          <text>---</text>
+          <text>---</text>
+        </view>
+        <image style="background-color: #FFF;" mode="aspectFit"></image>
+      </block>
+      <block wx:else>
+        <view class="personal-info-card___info__text">
+          <text>{{personalInfomation.XM}}</text>
+          <text>{{personalInfomation.XH}}</text>
+        </view>
+        <image src="{{personalInfomation.YHTX}}" mode="aspectFit"></image>
+      </block>
+    </view>
+    <view class="personal-info-card___action">
+      <block wx:if="{{isLogin}}">
+        <button type="warn" bindtap="onHitLogout">注销</button>
+      </block>
+      <block wx:else>
+        <button type="primary" bindtap="onHitLogin">登录</button>
+      </block>
+    </view>
   </view>
-  <block wx:if="{{isLogin}}">
-    <button type="warn" bindtap="onHitLogout">注销</button>
-  </block>
-  <block wx:else>
-    <button type="primary" bindtap="onHitLogin">登录</button>
-  </block>
   <view class="menus">
     <view class="menus___item" bindtap="onHitMenu" data-to="/pages/space/licenses/licenses">
       <svg-icon class="menus___item__icon" name="mdi-light:rss" size="50rpx" />

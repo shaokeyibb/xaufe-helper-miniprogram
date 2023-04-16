@@ -1,17 +1,27 @@
 /* pages/space/space.wxss */
 .personal-info-card{
   display: flex;
+  flex-direction: column;
+
+  margin: 0 10px;
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background-color:rgba(255, 140, 0, 0.685);
+}
+
+.personal-info-card___info{
+  display: flex;
   flex-direction: row;
 
   justify-content: space-around;
   align-items: center;
 
-  padding: 20rpx;
-
-  height: 20%;
+  padding-bottom: 20px;
 }
 
-.personal-info-card .personal-info-card___text{
+.personal-info-card___info__text{
   display: flex;
   flex-direction: column;
 
@@ -21,23 +31,24 @@
   justify-content: space-around;
 }
 
-.personal-info-card .personal-info-card___text text{
+.personal-info-card___info__text text{
   text-align: center;
   text-overflow: ellipsis;
 }
 
-.personal-info-card image {
+.personal-info-card___info image {
   width: 200rpx;
   height: 200rpx;
 
-  border-radius: 10%;
+  border-radius: 20%;
 }
 
 .menus{
   display: flex;
   flex-direction: column;
 
-  padding: 20rpx;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .menus___item {
