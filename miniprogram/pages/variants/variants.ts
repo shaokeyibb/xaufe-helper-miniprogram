@@ -18,6 +18,11 @@ Page({
             "title": "考试信息查询",
             "icon": "mdi-light:script",
             "url": "/pages/jwgl/examing/examing"
+          },
+          {
+            "title": "学生课表查询",
+            "icon": "mdi-light:calendar",
+            "url": "/pages/jwgl/schedule/schedule"
           }
         ]
       }

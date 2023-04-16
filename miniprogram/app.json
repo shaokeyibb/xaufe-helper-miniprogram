@@ -6,7 +6,8 @@
     "pages/variants/variants",
     "pages/jwgl/transcript/transcript",
     "pages/space/licenses/licenses",
-    "pages/jwgl/examing/examing"
+    "pages/jwgl/examing/examing",
+    "pages/jwgl/schedule/schedule"
   ],
   "window": {
     "backgroundTextStyle": "light",

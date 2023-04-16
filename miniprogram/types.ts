@@ -19,3 +19,11 @@ type TabData = {
   "path": string,
   "icon": string
 }
+
+type Node = {
+  type?: "node" | "text" | string
+  name?: string,
+  text?: string
+  attrs?: Record<string, string>,
+  children?: Node[]
+}
