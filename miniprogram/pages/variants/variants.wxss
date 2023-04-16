@@ -1,1 +1,53 @@
 /* pages/variants/variants.wxss */
+.cards{
+  padding: 20px;
+}
+
+.cards____card{
+  display: flex;
+  flex-direction: column;
+  
+  padding: 15px;
+  margin-bottom: 20px;
+  
+  background-color: white;
+
+  border-radius: 10px;
+}
+
+.cards____card___title{
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.cards____card___divider{
+  height: 1px;
+  background-color: gray;
+  filter: opacity(10%);
+
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.cards____card___items{
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards____card___items__item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab___content__item_icon{
+  padding-bottom: 5px;
+}
+
+.cards____card___items__item_text{
+  text-align: center;
+
+  color: gray;
+}

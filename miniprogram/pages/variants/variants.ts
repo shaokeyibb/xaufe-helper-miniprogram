@@ -11,6 +11,7 @@ Page({
         "entries": [
           {
             "title": "学生成绩查询",
+            "icon": "mdi-light:table",
             "url": "/pages/jwgl/transcript/transcript"
           }
         ]

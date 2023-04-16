@@ -1,10 +1,20 @@
 <!--pages/variants/variants.wxml-->
 <view class="page-view">
-  <block wx:for="{{variants}}" wx:for-index="variIdx" wx:for-item="variItem" wx:key="variIdx">
-    {{variItem.title}}
-    <block wx:for="{{variItem.entries}}" wx:key="index">
-      <navigator open-type="navigate" url="{{item.url}}"><text style="display: block">- {{index}}: {{item.title}}</text></navigator>
-    </block>
-  </block>
-  <tab-bar currentKey="variants"/>
+  <view class="cards">
+    <view class="cards____card" wx:for="{{variants}}" wx:for-index="variIdx" wx:for-item="variItem" wx:key="variIdx">
+      <text class="cards____card___title">{{variItem.title}}</text>
+      <view class="cards____card___divider"></view>
+      <view class="cards____card___items">
+        <block wx:for="{{variItem.entries}}" wx:key="index">
+          <navigator open-type="navigate" url="{{item.url}}">
+            <view class="cards____card___items__item">
+              <svg-icon class="tab___content__item_icon" name="{{item.icon}}" size="40px" />
+              <text class="cards____card___items__item_text">{{item.title}}</text>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </view>
+  <tab-bar currentKey="variants" />
 </view>
