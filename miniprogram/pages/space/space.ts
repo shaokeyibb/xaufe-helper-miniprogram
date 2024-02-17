@@ -1,6 +1,8 @@
-const space_relayModule = require('../../utils/relay.js')
+// const space_relayModule = require('../../utils/relay.js')
 const space_myModule = require("../../solutions/my")
 const space_tgcModule = require("../../utils/tgc")
+const space_requestModule = require("../../utils/request")
+const space_cookieModule = require('../../utils/cookie')
 
 // pages/space/space.ts
 Page({
@@ -133,15 +135,13 @@ Page({
   },
 
   async getPersonalInformation(): Promise<PersonalInfomation> {
-    const result = await space_relayModule.request({
-      url: "http://my.xaufe.edu.cn/cjmh/xsindex/xsjcxx?_t=" + Date.now().toString(),
+    const cookieJar: Record<string, string> = space_cookieModule.plainToCookieJar(await space_myModule.getOrRequireTokenCookie())
+    const result = await space_requestModule.request({
+      url: "https://my.xaufe.edu.cn/cjmh/xsindex/xsjcxx?_t=" + Date.now().toString(),
       method: "GET",
-      header: {
-        "Cookie": await space_myModule.getOrRequireTokenCookie()
-      },
       dataType: "json"
-    })
-    return result.body.info
+    }, true, -1, cookieJar)
+    return result.data.info
   },
 
   onHitMenu(e:any){

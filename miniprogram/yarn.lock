@@ -4,29 +4,29 @@
 
 "@iconify-json/mdi-light@^1.1.6":
   version "1.1.6"
-  resolved "https://registry.npmjs.org/@iconify-json/mdi-light/-/mdi-light-1.1.6.tgz#8f9c3b5d3d4b8460b5d81b51f21e5420700a8517"
+  resolved "https://registry.npmjs.org/@iconify-json/mdi-light/-/mdi-light-1.1.6.tgz"
   integrity sha512-rEw60ImpDd1AWZso5EnRu0WtJnwp4ZkVLt56tpSKfXH+VH0Tb/fl766nZnbFOBrhyowPhEJEEIle9u4VklBnZg==
   dependencies:
     "@iconify/types" "*"
 
 "@iconify/types@*":
   version "2.0.0"
-  resolved "https://registry.npmjs.org/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
+  resolved "https://registry.npmjs.org/@iconify/types/-/types-2.0.0.tgz"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
 crypto-js@^4.1.1:
   version "4.1.1"
-  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.1.1.tgz"
   integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 miniprogram-table-component@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.npmmirror.com/miniprogram-table-component/-/miniprogram-table-component-1.1.0.tgz#85f48dcf40fa00851496b3586a406d49f46f179f"
+  resolved "https://registry.npmmirror.com/miniprogram-table-component/-/miniprogram-table-component-1.1.0.tgz"
   integrity sha512-TRgo+2ouPqPI42EcXUM/5BndZAueWtk0v2tDmImujYPtmFWiQT/lmgL9TgUFWowfoFM5HsKrLqagIrMKXj9bRw==
 
 weapp-svg-icon@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/weapp-svg-icon/-/weapp-svg-icon-1.0.0.tgz#f314ac53f8d952fe0eee68de08e1887eb571d35e"
+  resolved "https://registry.npmjs.org/weapp-svg-icon/-/weapp-svg-icon-1.0.0.tgz"
   integrity sha512-NrrcrikpQEkRi1PEGW8GvR2T0M8LcElRXGBcFTucJ9GI2Et1T2kJO5Wv4pwMJxVRfKp7NglyC78Wf29OtiHRAw==
   dependencies:
     "@iconify-json/mdi-light" "^1.1.6"

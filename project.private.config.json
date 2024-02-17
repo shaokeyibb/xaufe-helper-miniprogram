@@ -1,7 +1,8 @@
 {
-  "projectname": "XAUFEHelper",
+  "projectname": "xaufe-helper-miniprogram",
   "setting": {
     "compileHotReLoad": true
   },
-  "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+  "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "libVersion": "development"
 }

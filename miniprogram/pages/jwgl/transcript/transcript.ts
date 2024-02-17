@@ -1,7 +1,9 @@
 // pages/jwgl/transcript/transcript.ts
-const transcript_relayModule = require('../../../utils/relay.js')
+// const transcript_relayModule = require('../../../utils/relay.js')
 const transcript_jwglModule = require('../../../solutions/jwgl')
 const transcript_dateModule = require('../../../utils/date')
+const transcript_requestModule = require('../../../utils/request')
+const transcript_cookieModule = require('../../../utils/cookie')
 
 Page({
 
@@ -155,7 +157,8 @@ Page({
       "queryModel.currentPage": 1,
       "queryModel.sortName": "",
       "queryModel.sortOrder": "asc",
-      "time": 1
+      "time": 0,
+      "kcbj": ""
     }
     wx.showLoading({
       title: '请稍后',
@@ -163,19 +166,19 @@ Page({
     })
 
     try {
-      const result = await transcript_relayModule.request({
-        url: "http://jwgl.xaufe.edu.cn/jwglxt/cjcx/cjcx_cxXsgrcj.html?doType=query",
+      const cookieJar: Record<string, string> = transcript_cookieModule.plainToCookieJar(await transcript_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/transcript/transcript"))
+      const result = await transcript_requestModule.request({
+        url: "https://jwgl.xaufe.edu.cn/jwglxt/cjcx/cjcx_cxXsgrcj.html?doType=query&gnmkdm=N305005",
         method: "POST",
         header: {
-          "Cookie": await transcript_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/transcript/transcript"),
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        form: data,
+        data,
         dataType: 'json'
-      })
+      }, true, -1, cookieJar)
 
       this.setData({
-        tableData: result.body.items
+        tableData: result.data.items
       })
 
       wx.hideLoading()

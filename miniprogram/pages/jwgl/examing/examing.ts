@@ -1,7 +1,10 @@
 // pages/jwgl/examing/examing.ts
-const examing_relayModule = require('../../../utils/relay.js')
+
+// const examing_relayModule = require('../../../utils/relay.js')
 const examing_jwglModule = require('../../../solutions/jwgl')
 const examing_dateModule = require('../../../utils/date')
+const examing_requestModule = require('../../../utils/request')
+const examing_cookieModule = require('../../../utils/cookie')
 
 Page({
 
@@ -167,19 +170,19 @@ Page({
     })
 
     try {
-      const result = await examing_relayModule.request({
+      const cookieJar: Record<string, string> = examing_cookieModule.plainToCookieJar(await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"))
+      const result = await examing_requestModule.request({
         url: "http://jwgl.xaufe.edu.cn/jwglxt/kwgl/kscx_cxXsksxxIndex.html?doType=query",
         method: "POST",
         header: {
-          "Cookie": await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"),
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        form: data,
+        data,
         dataType: 'json'
-      })
+      }, true, -1, cookieJar)
 
       this.setData({
-        tableData: result.body.items
+        tableData: result.data.items
       })
 
       wx.hideLoading()
@@ -204,19 +207,19 @@ Page({
     })
 
     try {
-      const result = await examing_relayModule.request({
+      const result = await examing_requestModule.request({
         url: "http://jwgl.xaufe.edu.cn/jwglxt/ksglcommon/common_cxKsmcByXnxq.html",
         method: "POST",
         header: {
           "Cookie": await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"),
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        form: data,
+        data,
         dataType: 'json'
       })
 
       this.setData({
-        examNames: this.data.examNames.slice(0,1).concat(result.body)
+        examNames: this.data.examNames.slice(0,1).concat(result.data)
       })
 
       wx.hideLoading()

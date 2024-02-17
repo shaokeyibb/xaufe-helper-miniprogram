@@ -1,7 +1,9 @@
 // pages/jwgl/schedule/schedule.ts
-const schedule_relayModule = require('../../../utils/relay.js')
+// const schedule_relayModule = require('../../../utils/relay.js')
 const schedule_jwglModule = require('../../../solutions/jwgl')
 const schedule_dateModule = require('../../../utils/date')
+const schedule_requestModule = require('../../../utils/request')
+const schedule_cookieModule = require('../../../utils/cookie')
 
 // match '1-16周(单)' to '1' in group 1, 16 in group 2, '单' in group 4
 const zcdRegex = /(\d+)-(\d+)周(\((单|双)\))?/
@@ -313,18 +315,18 @@ Page({
     })
 
     try {
-      const result = await schedule_relayModule.request({
-        url: "http://jwgl.xaufe.edu.cn/jwglxt/kbcx/xskbcx_cxXsgrkb.html",
+      const cookieJar: Record<string, string> = schedule_cookieModule.plainToCookieJar(await schedule_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/schedule/schedule"))
+      const result = await schedule_requestModule.request({
+        url: "https://jwgl.xaufe.edu.cn/jwglxt/kbcx/xskbcx_cxXsgrkb.html",
         method: "POST",
         header: {
-          "Cookie": await schedule_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/schedule/schedule"),
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        form: data,
+        data,
         dataType: 'json'
-      })
+      }, true, -1, cookieJar)
 
-      const nodes = this.makeNodes(result.body)
+      const nodes = this.makeNodes(result.data)
 
       this.setData({
         nodes: nodes
