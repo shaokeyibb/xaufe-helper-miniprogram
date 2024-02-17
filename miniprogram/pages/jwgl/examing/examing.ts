@@ -172,7 +172,7 @@ Page({
     try {
       const cookieJar: Record<string, string> = examing_cookieModule.plainToCookieJar(await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"))
       const result = await examing_requestModule.request({
-        url: "http://jwgl.xaufe.edu.cn/jwglxt/kwgl/kscx_cxXsksxxIndex.html?doType=query",
+        url: "https://jwgl.xaufe.edu.cn/jwglxt/kwgl/kscx_cxXsksxxIndex.html?doType=query",
         method: "POST",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -208,7 +208,7 @@ Page({
 
     try {
       const result = await examing_requestModule.request({
-        url: "http://jwgl.xaufe.edu.cn/jwglxt/ksglcommon/common_cxKsmcByXnxq.html",
+        url: "https://jwgl.xaufe.edu.cn/jwglxt/ksglcommon/common_cxKsmcByXnxq.html",
         method: "POST",
         header: {
           "Cookie": await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"),
