@@ -3,5 +3,4 @@
   <view class="header-card">
   欢迎使用“智慧仙财”小程序！
   </view>
-  <tab-bar currentKey="index"/>
 </view>

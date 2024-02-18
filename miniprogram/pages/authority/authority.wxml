@@ -1,26 +1,31 @@
 <!--pages/authority/authority.wxml-->
-<view class="page-view">
-  <view class="title">
-    <text>登录到 西安财经大学统一身份认证系统</text>
+<mp-form-page title="登录以继续" subtitle="连接到 西安财经大学统一身份认证系统">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells>
+      <mp-cell title="学号/工号" prop="username">
+        <input id="username" name="username" type="number" confirm-type="next" type="number" placeholder="请输入学号/工号" placeholder-class="weui-input__placeholder" value="{{formData.username}}" bindinput="onInput"></input>
+      </mp-cell>
+      <mp-cell title="密码" password="true" prop="password">
+        <input id="password" name="password" 	password="true" confirm-type="next" placeholder="请输入密码" placeholder-class="weui-input__placeholder" value="{{formData.password}}" bindinput="onInput"></input>
+      </mp-cell>
+      <mp-cell title="验证码" prop="captcha">
+        <view class="captcha-box">
+          <input id="captcha" name="captcha" class="weui-input" confirm-type="done" placeholder="请输入验证码" placeholder-class="weui-input__placeholder" value="{{formData.captcha}}" bindinput="onInput"></input>
+          <image class="captcha-box___captcha" src="{{captcha}}"></image>
+        </view>
+      </mp-cell>
+    </mp-cells>
+    <view class="weui-cells__tips">
+      <text class="weui-link" bindtap="updateCaptcha">看不清？换一张</text>
+    </view>
+  </mp-form>
+  <view slot="suffixtips">
+    <view class="weui-form__tips">
+      智慧仙财小程序不会在云端存储您的任何凭据数据，所有数据均在本地储存并已进行加密。
+    </view>
   </view>
-  <view class="container">
-    <form bindsubmit="onLogin">
-      <view class="form-item">
-        <input name="username" placeholder="学号/工号" confirm-type="next" value="{{username}}" type="number"/>
-      </view>
-      <view class="form-item">
-        <input name="password" password="true" placeholder="密码" confirm-type="next" value="{{password}}" bindinput="onInputPassword"/>
-      </view>
-      <view class="form-item captcha-box">
-        <input class="captcha-box___input" name="captcha" placeholder="验证码" confirm-type="done"/>
-        <image class="captcha-box___captcha" mode="aspectFit" src="{{captcha}}" bindtap="updateCaptcha"></image>
-      </view>
-      <view class="actions">
-        <button form-type="submit" type="primary">登录</button>
-      </view>
-    </form>
+  <view slot="button">
+    <button class="weui-btn" type="primary" bindtap="onLogin">登录</button>
   </view>
-  <view class="footbar">
-    <text>Tips：智慧仙财小程序不会在云端存储您的任何凭据数据，所有数据均在本地储存并已进行加密。</text>
-  </view>
-</view>
+</mp-form-page>

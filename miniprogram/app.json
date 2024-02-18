@@ -17,5 +17,37 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#26c90a",
+    "backgroundColor": "#FFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "images/mdi--home-outline.png",
+        "selectedIconPath": "images/mdi--home.png"
+      },
+      {
+        "pagePath": "pages/variants/variants",
+        "text": "功能中心",
+        "iconPath": "images/mdi--dots-horizontal-circle-outline.png",
+        "selectedIconPath": "images/mdi--dots-horizontal-circle.png"
+      },
+      {
+        "pagePath": "pages/space/space",
+        "text": "我的",
+        "iconPath": "images/mdi--account-outline.png",
+        "selectedIconPath": "images/mdi--account.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 5000
+  }
 }

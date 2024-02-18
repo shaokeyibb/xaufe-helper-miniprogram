@@ -12,13 +12,31 @@ Page({
    */
   data: {
     isLogin: false,
-    personalInfomation: {}
+    personalInfomation: {},
+    miniProgramInfo: {},
+    cachedBackgroundImageUrl: {}
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   async onLoad() {
+    this.setData({ miniProgramInfo: wx.getAccountInfoSync().miniProgram })
+
+    const cachedBackgroundImageUrl = wx.getStorageSync<string>("cached_background_image_url")
+    if (cachedBackgroundImageUrl) this.setData({ cachedBackgroundImageUrl: cachedBackgroundImageUrl })
+    else
+      wx.downloadFile({
+        url: "https://cas.xaufe.edu.cn/themes/loginNew/images/xc/bg.png",
+        success: (res) => {
+          this.setData({ cachedBackgroundImageUrl: res.tempFilePath })
+          wx.setStorage({
+            key: "cached_background_image_url",
+            data: this.data.cachedBackgroundImageUrl
+          })
+        }
+      })
+
     wx.showLoading({
       title: "加载中",
       mask: true
@@ -111,7 +129,7 @@ Page({
 
   onHitLogin() {
     wx.redirectTo({
-      url: "/pages/authority/authority?to=" + encodeURI("/pages/space/space")
+      url: "/pages/authority/authority?to=" + encodeURI("/pages/space/space") + "&fromTabBar=true"
     })
   },
 
@@ -144,7 +162,7 @@ Page({
     return result.data.info
   },
 
-  onHitMenu(e:any){
+  onHitMenu(e: any) {
     wx.navigateTo({
       url: e.currentTarget.dataset.to
     })

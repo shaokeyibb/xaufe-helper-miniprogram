@@ -16,5 +16,4 @@
       </view>
     </view>
   </view>
-  <tab-bar currentKey="variants" />
 </view>

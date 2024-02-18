@@ -1,5 +1,5 @@
 /* pages/authority/authority.wxss */
-.container {
+/* .container {
   margin: 0 50rpx;
 }
 
@@ -42,4 +42,20 @@
   margin: 20rpx 10rpx;
 
   text-align: center;
+} */
+.captcha-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.captcha-box___captcha {
+  height: 49rpx;
+  width: 206rpx;
+  position: relative;
+  left: 20rpx;
+}
+
+.weui-cells__tips{
+  margin-left: var(--weui-cellMarginLR);
+  margin-right: var(--weui-cellMarginLR);
 }

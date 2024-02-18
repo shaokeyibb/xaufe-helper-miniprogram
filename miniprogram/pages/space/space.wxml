@@ -1,6 +1,32 @@
 <!--pages/space/space.wxml-->
 <view class="page-view">
-  <view class="personal-info-card">
+  <view class="personal-info-card" bindtap="{{isLogin ? 'onHitLogout' : 'onHitLogin'}}" style="background-image: url({{cachedBackgroundImageUrl}});">
+    <view class="personal-info-card__info">
+      <view class="personal-info-card__info__image">
+        <image src="{{!isLogin ? '/images/ri--user-5-fill.svg' : !personalInfomation.YHTX ? '/images/icon-park-solid--people-unknown.svg' : personalInfomation.YHTX}}" mode="aspectFit"></image>
+      </view>
+      <view class="personal-info-card__info__text">
+        <text class="personal-info-card__info__text__primary">{{!isLogin ? "未登录用户" : !personalInfomation.XM ? "拉取用户信息失败" : personalInfomation.XM}}</text>
+        <text class="personal-info-card__info__text__secondary">{{!isLogin ? "登录以使用本小程序全部功能" : !personalInfomation.XH ? "仅影响显示，不影响您使用小程序功能" : personalInfomation.XH}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells">
+    <navigator url="/pages/space/licenses/licenses" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd" aria-hidden="true">
+        <image src="/images/mdi--open-source-initiative.svg"></image>
+      </view>
+      <view class="weui-cell__bd"><view>开放源代码许可</view></view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__text">©Copyright 2023-2024 智慧仙财。保留部分权利。</view>
+    <view class="weui-footer__text">陕ICP备2020016655号-2</view>
+    <view class="weui-footer__text">{{miniProgramInfo.appId}}@{{miniProgramInfo.envVersion}}
+      ，版本{{miniProgramInfo.version ? miniProgramInfo.version : "unknown"}}</view>
+  </view>
+  <!-- <view class="personal-info-card">
     <view class="personal-info-card___info">
       <block wx:if="{{!personalInfomation.XM}}">
         <view class="personal-info-card___info__text">
@@ -31,6 +57,5 @@
       <svg-icon class="menus___item__icon" name="mdi-light:rss" size="50rpx" />
       <text class="menus___item__text">开放源代码许可</text>
     </view>
-  </view>
-  <tab-bar currentKey="space" />
+  </view> -->
 </view>

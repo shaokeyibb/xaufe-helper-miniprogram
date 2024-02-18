@@ -41,7 +41,7 @@ Page({
    */
   onReady() {
     wx.setNavigationBarTitle({
-      title: '应用中心'
+      title: '功能中心'
     })
   },
 

@@ -1,6 +1,6 @@
 const cookieModule = require('../utils/cookie')
 
-export function request<T>(option: WechatMiniprogram.RequestOption<T>,
+export async function request<T>(option: WechatMiniprogram.RequestOption<T>,
   followRedirect: boolean = true,
   maxRedirect: number = -1,
   cookieJar: Record<string, string> = {}

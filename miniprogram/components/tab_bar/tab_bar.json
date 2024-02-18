@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "svg-icon": "../../miniprogram_npm/weapp-svg-icon/index"
-  }
-}
