@@ -100,13 +100,13 @@ Page<{
 
       this.setData({
         tableData: result.data.items
-        .filter(it => it.ksxzdm == "01") // 仅计算正常考试绩点
-        .filter(it => !isNaN(Number.parseInt(it.cj))), // 仅包含已评价课程
+          .filter(it => it.ksxzdm == "01") // 仅计算正常考试绩点
+          .filter(it => !isNaN(Number.parseInt(it.cj))), // 仅包含已评价课程
         // god damn why wechat not support Intl.DateTimeFormat
         time: new Date().toLocaleString()
       })
 
-      if(this.data.tableData.length == 0){
+      if (this.data.tableData.length == 0) {
         this.setData({
           error: "有效数据不足，无法进行计算"
         })
@@ -188,11 +188,11 @@ Page<{
     })
   },
 
-  updateEmotion(){
+  updateEmotion() {
     const gpa = this.data.gpa
-    if(!gpa) return
-    for(const [key, value] of emotions){
-      if(Number.parseFloat(gpa) >= Number.parseFloat(key)){
+    if (!gpa) return
+    for (const [key, value] of emotions) {
+      if (Number.parseFloat(gpa) >= Number.parseFloat(key)) {
         this.setData({
           emotion: value
         })
@@ -201,23 +201,23 @@ Page<{
     }
   },
 
-  updateBestScores(){
+  updateBestScores() {
     this.setData({
       bestScores: this.data.tableData
-      .sort((a,b)=>b.xfjd != a.xfjd 
-      ? Number.parseInt(b.xfjd) - Number.parseInt(a.xfjd) // 优先按照学分绩点排序
-      : Number.parseInt(b.cj) - Number.parseInt(a.cj)) // 对于学分绩点相同的情况，按照成绩排序
-      .slice(0,5)
+        .sort((a, b) => a.cj != b.cj
+          ? Number.parseInt(b.cj) - Number.parseInt(a.cj) // 优先按照成绩排序
+          : Number.parseInt(b.xfjd) - Number.parseInt(a.xfjd)) // 当成绩相同时，按照学分绩点排序
+        .slice(0, 5)
     })
   },
 
-  updateWorstScores(){
+  updateWorstScores() {
     this.setData({
       worstScores: this.data.tableData
-      .sort((a,b)=>a.xfjd != b.xfjd 
-      ? Number.parseInt(a.xfjd) - Number.parseInt(b.xfjd) 
-      : Number.parseInt(a.cj) - Number.parseInt(b.cj))
-      .slice(0,5)
+        .sort((b, a) => a.cj != b.cj
+          ? Number.parseInt(b.cj) - Number.parseInt(a.cj) // 优先按照成绩排序
+          : Number.parseInt(b.xfjd) - Number.parseInt(a.xfjd)) // 当成绩相同时，按照学分绩点排序
+        .slice(0, 5)
     })
   }
 })
