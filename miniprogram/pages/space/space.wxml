@@ -22,7 +22,7 @@
   </view>
   <view class="weui-footer weui-footer_fixed-bottom">
     <view class="weui-footer__text">©Copyright 2023-2024 智慧仙财。保留部分权利。</view>
-    <view class="weui-footer__text">陕ICP备2020016655号-2</view>
+    <view class="weui-footer__text">陕ICP备2020016655号-3X</view>
     <view class="weui-footer__text">{{miniProgramInfo.appId}}@{{miniProgramInfo.envVersion}}
       ，版本{{miniProgramInfo.version ? miniProgramInfo.version : "unknown"}}</view>
   </view>

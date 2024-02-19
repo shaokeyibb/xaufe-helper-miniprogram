@@ -1,48 +1,4 @@
 /* pages/authority/authority.wxss */
-/* .container {
-  margin: 0 50rpx;
-}
-
-.title {
-  padding: 100rpx 0;
-
-  width: 100%;
-  text-align: center;
-  font-size: 40rpx;
-  text-overflow: ellipsis;
-  max-lines: 1;
-}
-
-.form-item {
-  height: 50rpx;
-  padding-bottom: 30rpx;
-}
-
-.captcha-box {
-  display: flex;
-  flex-direction: row;
-}
-
-.captcha-box___input {
-  padding-right: 20rpx;
-}
-
-.captcha-box___captcha {
-  height: 50rpx;
-  width: 150rpx;
-}
-
-.actions {
-  padding-top: 50rpx;
-}
-
-.footbar {
-  position: fixed;
-  bottom: 0;
-  margin: 20rpx 10rpx;
-
-  text-align: center;
-} */
 .captcha-box {
   display: flex;
   flex-direction: row;

@@ -1,0 +1,12 @@
+<!--pages/index/news/news.wxml-->
+<page-meta root-font-size="system" />
+<view class="page">
+  <view class="weui-article">
+    <view aria-role="heading" aria-level="4" class="weui-article__h1">{{title}}</view>
+    <view class="weui-article__h4">发布时间：{{date}}</view>
+    <view class="weui-article__section">
+      <rich-text nodes="{{content}}" user-select="{{true}}"></rich-text>
+    </view>
+    <navigator class="weui-a11y-combo__content weui-link weui-wa-hotarea" url="{{url}}">来源：{{url}}</navigator>
+  </view>
+</view>

@@ -7,7 +7,8 @@
     "pages/jwgl/transcript/transcript",
     "pages/space/licenses/licenses",
     "pages/jwgl/examing/examing",
-    "pages/jwgl/schedule/schedule"
+    "pages/jwgl/schedule/schedule",
+    "pages/index/news/news"
   ],
   "window": {
     "backgroundTextStyle": "light",

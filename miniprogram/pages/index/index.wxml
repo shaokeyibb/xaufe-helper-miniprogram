@@ -1,6 +1,15 @@
 <!--pages/index/index.wxml-->
 <view class="page-view">
-  <view class="header-card">
-  欢迎使用“智慧仙财”小程序！
-  </view>
+  <view class="card header-card">欢迎使用“智慧仙财”小程序！</view>
+  <view class="card annotations-card weui-panel weui-panel_access">
+			<view class="weui-panel__hd">通知公告</view>
+			<view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text" aria-role="option" wx:for="{{annotations}}" wx:key="url"
+        id="{{item.url}}" bindtap="openNews">
+					<text class="weui-media-box__title">{{item.title}}</text>
+					<view class="weui-media-box__desc">{{item.date}}</view>
+				</view>
+			</view>
+    </view>
+    <view style="height: 10px;"></view>
 </view>
