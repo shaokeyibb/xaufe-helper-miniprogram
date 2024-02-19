@@ -99,10 +99,19 @@ Page<{
       }, true, 1, cookieJar)
 
       this.setData({
-        tableData: result.data.items,
+        tableData: result.data.items
+        .filter(it => it.ksxzdm == "01") // 仅计算正常考试绩点
+        .filter(it => !isNaN(Number.parseInt(it.cj))), // 仅包含已评价课程
         // god damn why wechat not support Intl.DateTimeFormat
         time: new Date().toLocaleString()
       })
+
+      if(this.data.tableData.length == 0){
+        this.setData({
+          error: "有效数据不足，无法进行计算"
+        })
+        return
+      }
 
       this.updateGradePointAverage()
       this.updateEmotion()
@@ -170,8 +179,7 @@ Page<{
   },
 
   updateGradePointAverage(predicate: ((value: any, index: number, array: any[]) => unknown) | null = null) {
-    // 仅计算正常考试绩点
-    let commonTests = this.data.tableData.filter(it => it.ksxzdm == "01")
+    let commonTests = this.data.tableData
     predicate && (commonTests = commonTests.filter(predicate))
     // 平均学分绩点=各门课程学分绩点之和÷各门课程学分数之和
     this.setData({
@@ -196,16 +204,20 @@ Page<{
   updateBestScores(){
     this.setData({
       bestScores: this.data.tableData
-      .filter(it => it.ksxzdm == "01")
-      .sort((a,b)=>Number.parseInt(b.cj) - Number.parseInt(a.cj)).slice(0,5)
+      .sort((a,b)=>b.xfjd != a.xfjd 
+      ? Number.parseInt(b.xfjd) - Number.parseInt(a.xfjd) // 优先按照学分绩点排序
+      : Number.parseInt(b.cj) - Number.parseInt(a.cj)) // 对于学分绩点相同的情况，按照成绩排序
+      .slice(0,5)
     })
   },
 
   updateWorstScores(){
     this.setData({
       worstScores: this.data.tableData
-      .filter(it => it.ksxzdm == "01")
-      .sort((a,b)=>Number.parseInt(a.cj) - Number.parseInt(b.cj)).slice(0,5)
+      .sort((a,b)=>a.xfjd != b.xfjd 
+      ? Number.parseInt(a.xfjd) - Number.parseInt(b.xfjd) 
+      : Number.parseInt(a.cj) - Number.parseInt(b.cj))
+      .slice(0,5)
     })
   }
 })

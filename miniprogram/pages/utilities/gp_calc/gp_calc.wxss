@@ -20,14 +20,27 @@
   font-style: italic;
 }
 
-.score-card{
+.score-card {
   display: flex;
   flex-direction: column;
 
   padding: 40px 20px 0 20px;
 }
 
-.score-card__title{
+.score-card__title {
   font-size: large;
   border-bottom: solid 1px;
+}
+
+.score-card__main {
+  display: grid;
+
+  text-align: center;
+
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.score-card__main__header {
+  font-size: small;
+  color: dimgray;
 }

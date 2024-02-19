@@ -19,9 +19,14 @@
         最给你涨分的五门课程
       </view>
       <view class="score-card__main">
-        <view wx:for="{{bestScores}}">
-          Top{{index+1}} {{item.kcmc}}: {{item.cj}} 分
-        </view>
+        <view class="score-card__main__header">排名</view>
+        <view class="score-card__main__header">课程名</view>
+        <view class="score-card__main__header">成绩(GP)</view>
+        <block wx:for="{{bestScores}}">
+          <view>Top {{index+1}}</view>
+          <view>{{item.kcmc}}</view>
+          <view>{{item.cj}}({{item.xfjd}})</view>
+        </block>
       </view>
     </view>
     <view class="score-card worst-score-card">
@@ -29,13 +34,18 @@
         最拖你后腿的五门课程
       </view>
       <view class="score-card__main">
-        <view wx:for="{{worstScores}}">
-          Top{{index+1}} {{item.kcmc}}: {{item.cj}} 分
-        </view>
+        <view class="score-card__main__header">排名</view>
+        <view class="score-card__main__header">课程名</view>
+        <view class="score-card__main__header">成绩(GP)</view>
+        <block wx:for="{{worstScores}}">
+          <view>Top {{index+1}}</view>
+          <view>{{item.kcmc}}</view>
+          <view>{{item.cj}}({{item.xfjd}})</view>
+        </block>
       </view>
     </view>
     <view class="generate-time-card weui-footer weui-footer_fixed-bottom">
-      <view class="weui-footer__text">计算数据截至：{{time}}，结果仅供参考。</view>
+      <view class="weui-footer__text">数据截至 {{time}}，不包含未评价课程分数，结果仅供参考。</view>
     </view>
   </block>
 </view>
