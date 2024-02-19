@@ -207,16 +207,16 @@ Page({
     })
 
     try {
+      const cookieJar: Record<string, string> =examing_cookieModule.plainToCookieJar(await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"))
       const result = await examing_requestModule.request({
         url: "https://jwgl.xaufe.edu.cn/jwglxt/ksglcommon/common_cxKsmcByXnxq.html",
         method: "POST",
         header: {
-          "Cookie": await examing_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/examing/examing"),
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data,
         dataType: 'json'
-      })
+      }, true, -1, cookieJar)
 
       this.setData({
         examNames: this.data.examNames.slice(0,1).concat(result.data)

@@ -71,10 +71,15 @@ Page<{
 
   openNews(event: any) {
     const id = event.currentTarget.id
-    const annotation = this.data.annotations.find(it => it.url === id)
-    console.log(annotation)
+    const annotation = this.data.annotations.find(it => it.url === id)!
+    if(annotation.url.startsWith("https://www.xaufe.edu.cn/content.jsp")){
+      wx.navigateTo({
+        url: "/pages/index/news/err_internal_only"
+      })
+      return
+    }
     wx.navigateTo({
-      url: "/pages/index/news/news?url=" + annotation?.url + "&title=" + annotation?.title + "&date=" + annotation?.date
+      url: "/pages/index/news/news?url=" + encodeURI(annotation.url) + "&title=" + encodeURI(annotation.title) + "&date=" + encodeURI(annotation.date)
     })
   }
 })

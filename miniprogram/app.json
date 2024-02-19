@@ -8,7 +8,9 @@
     "pages/space/licenses/licenses",
     "pages/jwgl/examing/examing",
     "pages/jwgl/schedule/schedule",
-    "pages/index/news/news"
+    "pages/index/news/news",
+    "pages/index/news/err_internal_only",
+    "pages/utilities/gp_calc/gp_calc"
   ],
   "window": {
     "backgroundTextStyle": "light",

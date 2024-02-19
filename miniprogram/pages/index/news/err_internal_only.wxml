@@ -1,0 +1,19 @@
+<!--pages/index/news/err_internal_only.wxml-->
+<page-meta root-font-size="system"/>
+<view class="page">
+	<view class="weui-msg">
+		<view class="weui-msg__icon-area"><text class="weui-icon-warn weui-icon_msg"></text></view>
+		<view class="weui-msg__text-area">
+			<view class="weui-msg__title">无法查看文章</view>
+			<view class="weui-msg__desc">该文章仅限内网用户查看</view>
+		</view>
+		<view class="weui-msg__tips-area">
+			<view class="weui-msg__tips">内网用户请自行前往原地址查看</view>
+		</view>
+		<view class="weui-msg__opr-area">
+			<view class="weui-btn-area">
+				<navigator class="weui-btn weui-btn_default" aria-role="button" open-type="navigateBack">返回上一页</navigator>
+			</view>
+		</view>
+	</view>
+</view>
