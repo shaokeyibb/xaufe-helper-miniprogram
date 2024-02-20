@@ -33,6 +33,12 @@ const emotions = new Map([...Object.entries({
     text: "不及格",
     description: "不是兄弟，你怎么做到的？？？",
     color: "#EE2C2C"
+  },
+  "-1": {
+    emoji: "🗿",
+    text: "无数据",
+    description: "你来到了没有知识的荒原",
+    color: "#000"
   }
 })].sort((a, b) => Number.parseFloat(b[0]) - Number.parseFloat(a[0])))
 
@@ -75,7 +81,7 @@ Page<{
       },
       {
         name: "专业 GPA",
-        filter: (value: any) => value.kcxzdm == 22 || value.kcxzdm == 23, // 专业必修 || 专业选修
+        filter: (value: any) => value.kcxzdm == 21 || value.kcxzdm == 22 || value.kcxzdm == 23, // 专业基础 || 专业必修 || 专业选修
         nextIdx: 0
       }
     ],
@@ -126,7 +132,8 @@ Page<{
 
       if (this.data.tableData.length == 0) {
         this.setData({
-          error: "有效数据不足，无法进行计算"
+          error: "有效数据不足，无法进行计算",
+          gpa: "-1"
         })
         return
       }
@@ -199,6 +206,15 @@ Page<{
   updateGradePointAverage(predicate: ((value: any, index: number, array: any[]) => unknown) | null | undefined = null) {
     let filteredTests = this.data.tableData
     predicate && (filteredTests = filteredTests.filter(predicate))
+
+    if (filteredTests.length == 0) {
+      this.setData({
+        error: "有效数据不足，无法进行计算",
+        gpa: "-1"
+      })
+      return
+    }
+
     // 平均学分绩点=各门课程学分绩点之和÷各门课程学分数之和
     const xfjd = filteredTests.map(it => Number(it.xfjd)).reduce((prev, cur) => prev + cur)
     const xf = filteredTests.map(it => Number(it.xf)).reduce((prev, cur) => prev + cur)
