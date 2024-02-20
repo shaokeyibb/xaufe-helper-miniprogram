@@ -182,9 +182,10 @@ Page<{
     let commonTests = this.data.tableData
     predicate && (commonTests = commonTests.filter(predicate))
     // 平均学分绩点=各门课程学分绩点之和÷各门课程学分数之和
+    const xfjd = commonTests.map(it => Number(it.xfjd)).reduce((prev, cur) => prev + cur)
+    const xf = commonTests.map(it => Number(it.xf)).reduce((prev, cur) => prev + cur)
     this.setData({
-      gpa: (commonTests.map(it => Number(it.xfjd)).reduce((prev, cur) => prev + cur) /
-        commonTests.map(it => Number(it.xf)).reduce((prev, cur) => prev + cur)).toFixed(2)
+      gpa: (xf == 0 ? 0 : xfjd / xf).toFixed(2) // if the total grade point is 0 (wtf really?), just make gpa to 0.
     })
   },
 
