@@ -6,6 +6,7 @@
       <view class="gpa-card__title">
         <text class="gpa-card__title__emoji">{{emotion.emoji}}</text>
         <text class="gpa-card__title__text">{{emotion.text}}</text>
+        <text class="gpa-card__title__mode gpa-card__description">*{{modes[modeIdx].name}}</text>
       </view>
       <view class="gpa-card__main">
         你从入学至今的 GPA（平均学分绩点）是 <text class="gpa-card__main__grade" style="color: {{emotion.color}};">{{gpa}}</text> 分
@@ -13,6 +14,9 @@
       <view class="gpa-card__description">
         <text>{{emotion.description}}</text>
       </view>
+    </view>
+    <view class="mode-switcher">
+      <view class="mode-switcher__button weui-btn weui-btn_mini weui-btn_default weui-wa-hotarea" aria-role="button" bindtap="changeMode">切换至 "{{modes[modes[modeIdx].nextIdx].name}}" 模式</view>
     </view>
     <view class="score-card best-score-card">
       <view class="score-card__title">
@@ -22,7 +26,7 @@
         <view class="score-card__main__header">排名</view>
         <view class="score-card__main__header">课程名</view>
         <view class="score-card__main__header">成绩(GP)</view>
-        <block wx:for="{{bestScores}}">
+        <block wx:for="{{bestScores}}" wx:key="kch">
           <view>Top {{index+1}}</view>
           <view>{{item.kcmc}}</view>
           <view>{{item.cj}}({{item.xfjd}})</view>
@@ -37,14 +41,14 @@
         <view class="score-card__main__header">排名</view>
         <view class="score-card__main__header">课程名</view>
         <view class="score-card__main__header">成绩(GP)</view>
-        <block wx:for="{{worstScores}}">
+        <block wx:for="{{worstScores}}" wx:key="kch">
           <view>Top {{index+1}}</view>
           <view>{{item.kcmc}}</view>
           <view>{{item.cj}}({{item.xfjd}})</view>
         </block>
       </view>
     </view>
-    <view class="generate-time-card weui-footer weui-footer_fixed-bottom">
+    <view class="generate-time-card weui-footer">
       <view class="weui-footer__text">数据截至 {{time}}，不包含未评价课程分数，结果仅供参考。</view>
     </view>
   </block>

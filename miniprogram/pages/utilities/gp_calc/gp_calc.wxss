@@ -4,14 +4,19 @@
   flex-direction: column;
   align-items: center;
 
-  margin-bottom: 100rpx;
+  margin-bottom: 50rpx;
 
   position: relative;
-  top: 50px;
+  top: 20px;
 }
 
 .gpa-card__title {
   font-size: xx-large;
+}
+
+.gpa-card__title__mode{
+  margin-left: 5px;
+  vertical-align: text-bottom;
 }
 
 .gpa-card__description {
@@ -43,4 +48,19 @@
 .score-card__main__header {
   font-size: small;
   color: dimgray;
+}
+
+.mode-switcher{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.mode-switcher__button.weui-btn{
+  margin-left: unset;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.weui-footer{
+  margin-top: 20px;
 }

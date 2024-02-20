@@ -48,6 +48,12 @@ Page<{
     color: string
   } | null,
   time: string,
+  modes: {
+    name: string,
+    filter?: (value: any, index: number, array: any[]) => unknown,
+    nextIdx: number
+  }[],
+  modeIdx: number,
   error: string
 }, Record<string, any>>({
 
@@ -62,6 +68,18 @@ Page<{
     gpa: null,
     emotion: null,
     time: "",
+    modes: [
+      {
+        name: "综合 GPA",
+        nextIdx: 1
+      },
+      {
+        name: "专业 GPA",
+        filter: (value: any) => value.kcxzdm == 22 || value.kcxzdm == 23, // 专业必修 || 专业选修
+        nextIdx: 0
+      }
+    ],
+    modeIdx: 0,
 
     error: ""
   },
@@ -178,12 +196,12 @@ Page<{
 
   },
 
-  updateGradePointAverage(predicate: ((value: any, index: number, array: any[]) => unknown) | null = null) {
-    let commonTests = this.data.tableData
-    predicate && (commonTests = commonTests.filter(predicate))
+  updateGradePointAverage(predicate: ((value: any, index: number, array: any[]) => unknown) | null | undefined = null) {
+    let filteredTests = this.data.tableData
+    predicate && (filteredTests = filteredTests.filter(predicate))
     // 平均学分绩点=各门课程学分绩点之和÷各门课程学分数之和
-    const xfjd = commonTests.map(it => Number(it.xfjd)).reduce((prev, cur) => prev + cur)
-    const xf = commonTests.map(it => Number(it.xf)).reduce((prev, cur) => prev + cur)
+    const xfjd = filteredTests.map(it => Number(it.xfjd)).reduce((prev, cur) => prev + cur)
+    const xf = filteredTests.map(it => Number(it.xf)).reduce((prev, cur) => prev + cur)
     this.setData({
       gpa: (xf == 0 ? 0 : xfjd / xf).toFixed(2) // if the total grade point is 0 (wtf really?), just make gpa to 0.
     })
@@ -202,9 +220,11 @@ Page<{
     }
   },
 
-  updateBestScores() {
+  updateBestScores(predicate: ((value: any, index: number, array: any[]) => unknown) | null | undefined = null) {
+    let filteredTests = this.data.tableData
+    predicate && (filteredTests = filteredTests.filter(predicate))
     this.setData({
-      bestScores: this.data.tableData
+      bestScores: filteredTests
         .sort((a, b) => a.cj != b.cj
           ? Number.parseInt(b.cj) - Number.parseInt(a.cj) // 优先按照成绩排序
           : Number.parseInt(b.xfjd) - Number.parseInt(a.xfjd)) // 当成绩相同时，按照学分绩点排序
@@ -212,13 +232,26 @@ Page<{
     })
   },
 
-  updateWorstScores() {
+  updateWorstScores(predicate: ((value: any, index: number, array: any[]) => unknown) | null | undefined = null) {
+    let filteredTests = this.data.tableData
+    predicate && (filteredTests = filteredTests.filter(predicate))
     this.setData({
-      worstScores: this.data.tableData
+      worstScores: filteredTests
         .sort((b, a) => a.cj != b.cj
           ? Number.parseInt(b.cj) - Number.parseInt(a.cj) // 优先按照成绩排序
           : Number.parseInt(b.xfjd) - Number.parseInt(a.xfjd)) // 当成绩相同时，按照学分绩点排序
         .slice(0, 5)
     })
+  },
+
+  changeMode() {
+    this.setData({
+      modeIdx: this.data.modes[this.data.modeIdx].nextIdx
+    })
+    const filter = this.data.modes[this.data.modeIdx].filter
+    this.updateGradePointAverage(filter)
+    this.updateEmotion()
+    this.updateBestScores(filter)
+    this.updateWorstScores(filter)
   }
 })
