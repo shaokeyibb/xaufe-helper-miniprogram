@@ -10,7 +10,10 @@
     "pages/jwgl/schedule/schedule",
     "pages/index/news/news",
     "pages/index/news/err_internal_only",
-    "pages/utilities/gp_calc/gp_calc"
+    "pages/utilities/gp_calc/gp_calc",
+    "pages/jwgl/transcript_new/transcript_new",
+    "pages/jwgl/transcript_new/result",
+    "pages/common/result_empty/result_empty"
   ],
   "window": {
     "backgroundTextStyle": "light",

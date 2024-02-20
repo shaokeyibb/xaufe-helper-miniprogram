@@ -1,0 +1,8 @@
+<!--pages/jwgl/transcript_new/result_empty.wxml-->
+<view class="page">
+  <mp-msg type="info" title="无数据" desc="可尝试更换筛选条件后重试">
+    <view slot="handle">
+      <navigator open-type="navigateBack"><button class="weui-btn" type="default">返回</button></navigator>
+    </view>
+  </mp-msg>
+</view>

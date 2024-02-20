@@ -13,3 +13,7 @@
   max-height: 100%;
   background-color: #F5F6FA;
 }
+
+.page {
+  height: 100vh
+}

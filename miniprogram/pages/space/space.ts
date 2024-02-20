@@ -85,48 +85,7 @@ Page({
       title: '我的'
     })
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  async onShow() {
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage() {
-
-  },
-
+  
   onHitLogin() {
     wx.redirectTo({
       url: "/pages/authority/authority?to=" + encodeURI("/pages/space/space") + "&fromTabBar=true"

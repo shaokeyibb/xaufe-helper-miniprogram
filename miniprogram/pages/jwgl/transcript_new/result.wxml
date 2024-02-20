@@ -1,0 +1,54 @@
+<!--pages/jwgl/transcript_new/result.wxml-->
+<wxs module="wxs">
+  var scores = [
+    {
+      score: "90",
+      color: "#B3EE3A"
+    },
+    {
+      score: "80",
+      color: "#48D1CC"
+    },
+    {
+      score: "70",
+      color: "#FFC125"
+    },
+    {
+      score: "60",
+      color: "#FF8C00"
+    },
+    {
+      score: "0",
+      color: "#EE2C2C"
+    },
+    {
+      score: "-1",
+      color: "#000"
+    },
+  ]
+
+  var calcScoreColor = function(rawScore) {
+    var score = parseInt(rawScore)
+    if(isNaN(score)) return scores[5];
+    for(var idx = 0; idx < scores.length; idx++){
+      var it = scores[idx];
+      if(score >= it.score) return it.color;
+    }
+    return scores[5]
+  }
+
+  module.exports = {
+    calcScoreColor: calcScoreColor
+  };
+</wxs>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{items}}" wx:key="kch">
+    <view class="weui-cell__bd" aria-hidden="true">
+      <view style="{{item.cj < 60 ? 'color: red;' : ''}}">{{item.kcmc}}</view>
+      <view class="weui-cell__desc">{{item.kcxzmc}}</view>
+      <view class="weui-cell__desc" style="{{item.ksxzdm != '01' ? 'color: blue;' : ''}}">{{item.ksxz}}</view>
+      <view class="weui-cell__desc">学分{{item.xf}} 绩点{{item.jd}}</view>
+    </view>
+    <view aria-hidden="true"><text class="score" style="color: {{wxs.calcScoreColor(item.cj)}};">{{item.cj}}</text></view>
+  </view>
+</view>

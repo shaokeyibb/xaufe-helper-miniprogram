@@ -104,48 +104,6 @@ Page({
     })
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage() {
-
-  },
-
   async onSubmitQuery(e: any) {
     let data = e.detail.value;
     data = {
@@ -165,7 +123,7 @@ Page({
       "time": 1
     }
     wx.showLoading({
-      title: '请稍后',
+      title: '请稍候',
       mask: true
     })
 
@@ -202,7 +160,7 @@ Page({
       "xqm": this.data.terms[this.data.selectedTermIdx].value
     }
     wx.showLoading({
-      title: '请稍后',
+      title: '请稍候',
       mask: true
     })
 

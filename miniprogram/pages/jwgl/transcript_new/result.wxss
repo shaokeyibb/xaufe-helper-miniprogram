@@ -1,0 +1,4 @@
+/* pages/jwgl/transcript_new/result.wxss */
+.score{
+  font-size: x-large;
+}

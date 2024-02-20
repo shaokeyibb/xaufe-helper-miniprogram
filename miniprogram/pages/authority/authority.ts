@@ -70,7 +70,7 @@ Page({
       "authenticationFailure.PasswordErrorException": "密码错误",
       "authenticationFailure.MyAccountNotFoundException": "学号/工号不存在",
       "authenticationFailure.CaptchaErrorException": "验证码错误",
-      "authenticationFailure.LockUserNameException": "账户已被锁定，请稍后再试或前往 https://cas.xaufe.edu.cn 重置密码"
+      "authenticationFailure.LockUserNameException": "账户已被锁定，请稍候再试或前往 https://cas.xaufe.edu.cn 重置密码"
     }
   },
 
