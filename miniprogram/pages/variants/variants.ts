@@ -15,9 +15,9 @@ Page({
             "url": "/pages/jwgl/transcript_new/transcript_new"
           },
           {
-            "title": "考试信息查询(Legacy)",
+            "title": "考试信息查询",
             "icon": "mdi-light:script",
-            "url": "/pages/jwgl/examing/examing"
+            "url": "/pages/jwgl/examing_new/examing_new"
           },
           {
             "title": "学生课表查询(Legacy)",

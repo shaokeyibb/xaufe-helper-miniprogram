@@ -1,0 +1,16 @@
+<!--pages/jwgl/examing_new/result.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{items}}" wx:key="kch">
+    <view class="card weui-cell__bd" aria-hidden="true">
+      <view class="primary">
+        <view class="name">{{item.kcmc}}</view>
+        <view class="time">{{item.kssj}}</view>
+        <view class="weui-cell__desc">{{item.cdxqmc}}-{{item.cdmc}}</view>
+      </view>
+      <view class="secondary">
+        <view class="weui-cell__desc">{{item.ksmc}}</view>
+        <view class="weui-cell__desc">{{item.khfs}}，学分{{item.xf}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -13,7 +13,9 @@
     "pages/utilities/gp_calc/gp_calc",
     "pages/jwgl/transcript_new/transcript_new",
     "pages/jwgl/transcript_new/result",
-    "pages/common/result_empty/result_empty"
+    "pages/common/result_empty/result_empty",
+    "pages/jwgl/examing_new/examing_new",
+    "pages/jwgl/examing_new/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

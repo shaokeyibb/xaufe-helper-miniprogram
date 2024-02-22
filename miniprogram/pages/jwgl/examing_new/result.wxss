@@ -1,0 +1,35 @@
+/* pages/jwgl/examing_new/result.wxss */
+.card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.primary{
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  align-self: flex-start;
+}
+
+.name{
+  font-size: large;
+  font-weight: bold;
+}
+
+.time{
+  font-size: medium;
+}
+
+.weui-cell__desc {
+  font-size: 12px;
+  color: var(--weui-FG-2);
+  line-height: 1.4;
+  padding-top: 4px;
+}
