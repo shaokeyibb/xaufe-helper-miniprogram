@@ -20,9 +20,9 @@ Page({
             "url": "/pages/jwgl/examing_new/examing_new"
           },
           {
-            "title": "学生课表查询(Legacy)",
+            "title": "学生课表查询",
             "icon": "mdi-light:calendar",
-            "url": "/pages/jwgl/schedule/schedule"
+            "url": "/pages/jwgl/schedule_new/schedule_new"
           }
         ]
       },

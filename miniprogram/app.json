@@ -15,7 +15,9 @@
     "pages/jwgl/transcript_new/result",
     "pages/common/result_empty/result_empty",
     "pages/jwgl/examing_new/examing_new",
-    "pages/jwgl/examing_new/result"
+    "pages/jwgl/examing_new/result",
+    "pages/jwgl/schedule_new/schedule_new",
+    "pages/jwgl/schedule_new/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

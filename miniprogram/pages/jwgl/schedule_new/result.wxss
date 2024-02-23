@@ -1,4 +1,4 @@
-/* pages/jwgl/examing_new/result.wxss */
+/* pages/jwgl/schedule_new/result.wxss */
 .card{
   display: flex;
   justify-content: space-between;
@@ -8,7 +8,7 @@
 .primary{
   display: flex;
   flex-direction: column;
-  
+
   max-width: 70%;
 }
 

@@ -1,0 +1,104 @@
+<!--pages/jwgl/schedule_new/result.wxml-->
+<wxs module="wxs">
+  // match '1-2'
+  var jcsRegex = getRegExp("(\d+)-(\d+)")
+
+  var classDurations = [
+    {
+      from: "08:00",
+      to: "08:50"
+    },
+    {
+      from: "09:00",
+      to: "09:50"
+    },
+    {
+      from: "10:10",
+      to: "11:00"
+    },
+    {
+      from: "11:10",
+      to: "12:00"
+    },
+    {
+      from: "14:10",
+      to: "15:00"
+    },
+    {
+      from: "15:10",
+      to: "16:00"
+    },
+    {
+      from: "16:10",
+      to: "17:00"
+    },
+    {
+      from: "17:10",
+      to: "17:50"
+    },
+    {
+      from: "18:00",
+      to: "18:50"
+    },
+    {
+      from: "19:00",
+      to: "19:50"
+    }
+  ]
+
+  var findWeekClasses = function (classes, weekId) {
+    return classes.filter(function (it) {
+      return it.xqj == weekId;
+    });
+  }
+
+  var getClassDuration = function (clazz) {
+    var jcs = jcsRegex.exec(clazz.jcs);
+    return classDurations[parseInt(jcs[1]) - 1].from + " - " + classDurations[parseInt(jcs[2]) - 1].to;
+  }
+
+  module.exports = {
+    findWeekClasses: findWeekClasses,
+    getClassDuration: getClassDuration
+  };
+</wxs>
+
+<view class="page">
+  <block wx:for="{{data.xqjmcMap}}" wx:for-index="weekId" wx:for-item="weekName">
+    <view class="weui-cells__title">{{weekName}}</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{wxs.findWeekClasses(data.kbList, weekId).length == 0}}">
+        <view class="weui-cell__bd">
+          <view>本日没有课程~</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{wxs.findWeekClasses(data.kbList, weekId)}}" wx:key="kch" wx:for-index="classIdx" wx:for-item="class">
+        <view class="card weui-cell__bd">
+          <view class="primary">
+            <view class="name">{{class.kcmc}}</view>
+            <view class="time">{{class.zcd}} {{wxs.getClassDuration(class)}}</view>
+            <view class="weui-cell__desc">@{{class.xqmc}}-{{class.cdmc}}</view>
+          </view>
+          <view class="secondary">
+            <view class="weui-cell__desc">{{class.xm}}</view>
+            <view class="weui-cell__desc">{{class.kcxz}}，学分{{class.xf}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="weui-cells__title">实训课程</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{data.sjkList}}" wx:key="kcmc" wx:for-index="classIdx" wx:for-item="class">
+      <view class="card weui-cell__bd">
+        <view class="primary">
+          <view class="name">{{class.kcmc}}</view>
+          <view class="time">{{class.qsjsz}}</view>
+        </view>
+        <view class="secondary">
+          <view class="weui-cell__desc">{{class.jsxm}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

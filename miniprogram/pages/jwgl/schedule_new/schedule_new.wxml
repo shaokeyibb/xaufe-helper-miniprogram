@@ -1,0 +1,27 @@
+<!--pages/jwgl/schedule_new/schedule_new.wxml-->
+<!--pages/jwgl/transcript_new/transcript_new.wxml-->
+<view class="page">
+  <mp-form-page title="学生课表查询">
+    <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <mp-form id="form">
+      <mp-cells>
+        <mp-cell title="学年" link="true">
+          <picker id="selectedYearIdx" name="selectedYearIdx" header-text="选择学年" mode="selector" range="{{years}}" range-key="key" value="{{formData.selectedYearIdx}}" bindchange="onInput">
+            {{years[formData.selectedYearIdx].key}}
+          </picker>
+        </mp-cell>
+        <mp-cell title="学期" link="true">
+          <picker id="selectedTermIdx" name="selectedTermIdx" header-text="选择学期" mode="selector" range="{{terms}}" range-key="key" value="{{formData.selectedTermIdx}}" bindchange="onInput">
+            {{terms[formData.selectedTermIdx].key}}
+          </picker>
+        </mp-cell>
+      </mp-cells>
+    </mp-form>
+    <view slot="button">
+      <button class="weui-btn" type="primary" bindtap="onSubmitQuery">查询</button>
+    </view>
+    <view slot="footer">
+      <navigator url="/pages/jwgl/schedule/schedule">喜欢旧版页面？点我跳转</navigator>
+    </view>
+  </mp-form-page>
+</view>

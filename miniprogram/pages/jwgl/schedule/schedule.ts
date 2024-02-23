@@ -121,7 +121,7 @@ Page({
    */
   onReady() {
     wx.setNavigationBarTitle({
-      title: '学生课表查询'
+      title: '学生课表查询（Legacy）'
     })
   },
 

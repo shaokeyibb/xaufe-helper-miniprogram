@@ -27,12 +27,12 @@
     },
   ]
 
-  var calcScoreColor = function(rawScore) {
+  var calcScoreColor = function (rawScore) {
     var score = parseInt(rawScore)
-    if(isNaN(score)) return scores[5];
-    for(var idx = 0; idx < scores.length; idx++){
+    if (isNaN(score)) return scores[5];
+    for (var idx = 0; idx < scores.length; idx++) {
       var it = scores[idx];
-      if(score >= it.score) return it.color;
+      if (score >= it.score) return it.color;
     }
     return scores[5]
   }
@@ -41,9 +41,9 @@
     calcScoreColor: calcScoreColor
   };
 </wxs>
-<view class="weui-cells weui-cells_after-title">
+<view class="weui-cells">
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{items}}" wx:key="kch">
-    <view class="weui-cell__bd" aria-hidden="true">
+    <view class="weui-cell__bd">
       <view style="{{item.cj < 60 ? 'color: red;' : ''}}">{{item.kcmc}}</view>
       <view class="weui-cell__desc">{{item.kcxzmc}}</view>
       <view class="weui-cell__desc" style="{{item.ksxzdm != '01' ? 'color: blue;' : ''}}">{{item.ksxz}}</view>

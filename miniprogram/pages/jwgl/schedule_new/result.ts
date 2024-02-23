@@ -1,11 +1,11 @@
-// pages/jwgl/examing_new/result.ts
+// pages/jwgl/schedule_new/result.ts
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: []
+    data: [],
   },
 
   /**
@@ -14,16 +14,16 @@ Page({
   onLoad() {
     const eventChannel = this.getOpenerEventChannel()
     const that = this;
-    eventChannel.on('items', function (data) {
+    eventChannel.on('data', function (data) {
       that.setData({
-        items: data.items
+        data: data.data
       })
     })
   },
 
   onReady() {
     wx.setNavigationBarTitle({
-      title: '考试信息查询结果'
+      title: '学生课表查询结果'
     })
   }
 })
