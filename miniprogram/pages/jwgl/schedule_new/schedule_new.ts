@@ -66,7 +66,22 @@ Page({
       "kzlx": "ck",
       "xsdm": ""
     }
+    const metadata = {
+      "year_id": data.xnm,
+      "term_id": data.xqm,
+    }
     try {
+      const cache = wx.getStorageSync("schedule")
+      if (cache
+        && cache.metadata["year_id"] == metadata["year_id"] && cache.metadata["term_id"] == metadata["term_id"]) {
+        wx.navigateTo({
+          url: "/pages/jwgl/schedule_new/result"
+        }).then(res => {
+          res.eventChannel.emit('data', cache)
+        })
+        return
+      }
+
       const cookieJar: Record<string, string> = schedule_new_cookieModule.plainToCookieJar(await schedule_new_jwglModule.getOrRequireTokenCookie(true, "/pages/jwgl/schedule_new/schedule_new"))
       const result: any = await schedule_new_requestModule.request({
         url: "https://jwgl.xaufe.edu.cn/jwglxt/kbcx/xskbcx_cxXsgrkb.html",
@@ -83,7 +98,15 @@ Page({
       wx.navigateTo({
         url: "/pages/jwgl/schedule_new/result"
       }).then(res => {
-        res.eventChannel.emit('data', { data: rst })
+        const send = {
+          data: rst,
+          metadata
+        }
+        wx.setStorage({
+          key: "schedule",
+          data: send
+        })
+        res.eventChannel.emit('data', send)
       })
 
     } catch (err: unknown) {
