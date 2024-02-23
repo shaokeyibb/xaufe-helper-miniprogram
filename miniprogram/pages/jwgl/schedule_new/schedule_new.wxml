@@ -17,6 +17,9 @@
         </mp-cell>
       </mp-cells>
     </mp-form>
+    <view slot="tips" wx:if="{{cache && cache.metadata['year_id'] == years[formData.selectedYearIdx].value && cache.metadata['term_id'] == terms[formData.selectedTermIdx].value }}">
+      <view class="weui-form__tips">*当前课表数据已自上次查询时缓存</view>
+    </view>
     <view slot="button">
       <button class="weui-btn" type="primary" bindtap="onSubmitQuery">查询</button>
     </view>

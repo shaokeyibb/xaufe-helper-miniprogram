@@ -4,7 +4,22 @@ const schedule_new_dateModule = require('../../../utils/date')
 const schedule_new_requestModule = require('../../../utils/request')
 const schedule_new_cookieModule = require('../../../utils/cookie')
 
-Page({
+Page<{
+  cache: any | null
+  years: {
+    key: string,
+    value: string
+  }[],
+  terms: {
+    key: string,
+    value: string
+  }[],
+  error: string,
+  formData: {
+    selectedYearIdx: number,
+    selectedTermIdx: number,
+  }
+}, Record<string, any>>({
 
   /**
    * 页面的初始数据
@@ -32,6 +47,8 @@ Page({
       }
     ],
 
+    cache: null,
+
     error: '',
 
     formData: {
@@ -47,6 +64,21 @@ Page({
     wx.setNavigationBarTitle({
       title: '学生课表查询'
     })
+  },
+
+  onLoad() {
+    const cache = wx.getStorageSync("schedule")
+    if (cache) {
+      const cacheYearIdx = this.data.years.findIndex((it) => it.value == cache.metadata["year_id"])
+      const cachedTermIdx = this.data.terms.findIndex((it) => it.value == cache.metadata["term_id"])
+      this.setData({ cache })
+      if (cacheYearIdx != -1) {
+        this.setData({ [`formData.selectedYearIdx`]: cacheYearIdx })
+      }
+      if (cachedTermIdx != -1) {
+        this.setData({ [`formData.selectedTermIdx`]: cachedTermIdx })
+      }
+    }
   },
 
   onInput(e: any) {
@@ -71,8 +103,8 @@ Page({
       "term_id": data.xqm,
     }
     try {
-      const cache = wx.getStorageSync("schedule")
-      if (cache
+      const cache = this.data.cache
+      if (cache != null
         && cache.metadata["year_id"] == metadata["year_id"] && cache.metadata["term_id"] == metadata["term_id"]) {
         wx.navigateTo({
           url: "/pages/jwgl/schedule_new/result"

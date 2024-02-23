@@ -133,7 +133,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{data.sjkList.length == 0}}">
         <view class="weui-cell__bd">
-          <view>本学年无实训课程</view>
+          <view>本学期无实训课程</view>
         </view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{data.sjkList}}" wx:key="kcmc" wx:for-index="classIdx" wx:for-item="class">
