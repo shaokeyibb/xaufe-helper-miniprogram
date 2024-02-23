@@ -28,3 +28,7 @@
 .time{
   font-size: medium;
 }
+
+.today{
+  font-weight: bold;
+}

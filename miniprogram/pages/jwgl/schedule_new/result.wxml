@@ -46,6 +46,16 @@
     }
   ]
 
+  var jsDateDayToWeekId = {
+    "0": "7", // Sunday
+    "1": "1", // Monday
+    "2": "2", // Tuesday
+    "3": "3", // Wednesday
+    "4": "4", // Thursday
+    "5": "5", // Friday
+    "6": "6" // Saturday
+  }
+
   var findWeekClasses = function (classes, weekId) {
     return classes.filter(function (it) {
       return it.xqj == weekId;
@@ -57,15 +67,22 @@
     return classDurations[parseInt(jcs[1]) - 1].from + " - " + classDurations[parseInt(jcs[2]) - 1].to;
   }
 
+  var isToday = function (weekId) {
+    return jsDateDayToWeekId[getDate().getDay().toString()] == weekId
+  }
+
   module.exports = {
     findWeekClasses: findWeekClasses,
-    getClassDuration: getClassDuration
+    getClassDuration: getClassDuration,
+    isToday: isToday
   };
 </wxs>
 
 <view class="page">
   <block wx:for="{{data.xqjmcMap}}" wx:for-index="weekId" wx:for-item="weekName">
-    <view class="weui-cells__title">{{weekName}}</view>
+    <view class="weui-cells__title">
+      {{weekName}}<text wx:if="{{wxs.isToday(weekId)}}" class="today">（今日）</text>
+    </view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{wxs.findWeekClasses(data.kbList, weekId).length == 0}}">
         <view class="weui-cell__bd">
