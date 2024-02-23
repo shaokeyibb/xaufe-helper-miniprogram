@@ -7,6 +7,6 @@
     <view class="weui-article__section">
       <rich-text nodes="{{content}}" user-select="{{true}}"></rich-text>
     </view>
-    <navigator class="weui-a11y-combo__content weui-link weui-wa-hotarea" url="{{url}}">来源：{{url}}</navigator>
+    <navigator class="weui-a11y-combo__content weui-link weui-wa-hotarea url" url="{{url}}" data-url="{{url}}" bindtap="copyToClipboard">来源（点击复制）：{{url}}</navigator>
   </view>
 </view>
