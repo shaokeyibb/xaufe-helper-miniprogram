@@ -71,17 +71,41 @@
     return jsDateDayToWeekId[getDate().getDay().toString()] == weekId
   }
 
+  var isTomorrow = function (weekId) {
+    return jsDateDayToWeekId[((getDate().getDay() + 1) % 7).toString()] == weekId
+  }
+
   module.exports = {
     findWeekClasses: findWeekClasses,
     getClassDuration: getClassDuration,
-    isToday: isToday
+    isToday: isToday,
+    isTomorrow: isTomorrow
   };
 </wxs>
 
-<view class="page">
-  <block wx:for="{{data.xqjmcMap}}" wx:for-index="weekId" wx:for-item="weekName">
+<view class="page" bindtouchstart='onTouch' bindtouchend="onTouch">
+  <view class="weui-steps weui-steps_horizonal">
+    <view class="weui-steps__item {{ mode > 0 ? 'weui-steps__item_success' : ''}}">
+      <view class="weui-steps__item__inner" data-mode="0" bindtap="switchMode">
+        <text class="weui-steps__item__title">今天</text>
+      </view>
+    </view>
+    <view class="weui-steps__item {{ mode > 1 ? 'weui-steps__item_success' : ''}}">
+      <view class="weui-steps__item__inner" data-mode="1" bindtap="switchMode">
+        <text class="weui-steps__item__title">明天</text>
+      </view>
+    </view>
+    <view class="weui-steps__item {{ mode > 2 ? 'weui-steps__item_success' : ''}}">
+      <view class="weui-steps__item__inner" data-mode="2" bindtap="switchMode">
+        <text class="weui-steps__item__title">全部</text>
+      </view>
+    </view>
+  </view>
+  <block wx:for="{{data.xqjmcMap}}" wx:for-index="weekId" wx:for-item="weekName" wx:if="{{(mode == 0 && wxs.isToday(weekId)) || (mode == 1 && wxs.isTomorrow(weekId)) || mode == 2}}">
     <view class="weui-cells__title">
-      {{weekName}}<text wx:if="{{wxs.isToday(weekId)}}" class="today">（今日）</text>
+      {{weekName}}
+      <text wx:if="{{mode != 0 && wxs.isToday(weekId)}}" class="today">(今天)</text>
+      <text wx:if="{{mode != 1 && wxs.isTomorrow(weekId)}}">(明天)</text>
     </view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{wxs.findWeekClasses(data.kbList, weekId).length == 0}}">
@@ -104,18 +128,20 @@
       </view>
     </view>
   </block>
-  <view class="weui-cells__title">实训课程</view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{data.sjkList}}" wx:key="kcmc" wx:for-index="classIdx" wx:for-item="class">
-      <view class="card weui-cell__bd">
-        <view class="primary">
-          <view class="name">{{class.kcmc}}</view>
-          <view class="time">{{class.qsjsz}}</view>
-        </view>
-        <view class="secondary">
-          <view class="weui-cell__desc">{{class.jsxm}}</view>
+  <block wx:if="{{mode == 2}}">
+    <view class="weui-cells__title">实训课程</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{data.sjkList}}" wx:key="kcmc" wx:for-index="classIdx" wx:for-item="class">
+        <view class="card weui-cell__bd">
+          <view class="primary">
+            <view class="name">{{class.kcmc}}</view>
+            <view class="time">{{class.qsjsz}}</view>
+          </view>
+          <view class="secondary">
+            <view class="weui-cell__desc">{{class.jsxm}}</view>
+          </view>
         </view>
       </view>
     </view>
-  </view>
+  </block>
 </view>

@@ -32,3 +32,7 @@
 .today{
   font-weight: bold;
 }
+
+.weui-steps{
+  padding: 40rpx;
+}
