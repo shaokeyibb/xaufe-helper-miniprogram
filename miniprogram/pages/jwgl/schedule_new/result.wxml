@@ -101,7 +101,7 @@
       </view>
     </view>
   </view>
-  <block wx:for="{{data.xqjmcMap}}" wx:for-index="weekId" wx:for-item="weekName" wx:if="{{(mode == 0 && wxs.isToday(weekId)) || (mode == 1 && wxs.isTomorrow(weekId)) || mode == 2}}">
+  <block wx:for="{{data.xqjmcMap}}" wx:for-index="weekId" wx:for-item="weekName" wx:if="{{(mode == 0 && wxs.isToday(weekId)) || (mode == 1 && wxs.isTomorrow(weekId)) || mode == 2}}" wx:key="*this">
     <view class="weui-cells__title">
       {{weekName}}
       <text wx:if="{{mode != 0 && wxs.isToday(weekId)}}" class="today">(今天)</text>
@@ -131,6 +131,11 @@
   <block wx:if="{{mode == 2}}">
     <view class="weui-cells__title">实训课程</view>
     <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{data.sjkList.length == 0}}">
+        <view class="weui-cell__bd">
+          <view>本学年无实训课程</view>
+        </view>
+      </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{data.sjkList}}" wx:key="kcmc" wx:for-index="classIdx" wx:for-item="class">
         <view class="card weui-cell__bd">
           <view class="primary">
