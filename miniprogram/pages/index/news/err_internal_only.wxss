@@ -1,5 +1,1 @@
 /* pages/index/news/err_internal_only.wxss */
-.page{height:100%;background-color:var(--weui-BG-2)}
-.weui-msg__tips-area{
-  margin-top: 450rpx;
-}
