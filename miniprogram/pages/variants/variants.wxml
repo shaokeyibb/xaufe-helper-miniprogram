@@ -1,6 +1,9 @@
 <!--pages/variants/variants.wxml-->
 <view class="page-view">
   <view class="cards">
+    <view class="cards____card">
+      <ad unit-id="adunit-f6fce447f52f3b0b"/>
+    </view>
     <view class="cards____card" wx:for="{{variants}}" wx:for-index="variIdx" wx:for-item="variItem" wx:key="variIdx">
       <text class="cards____card___title">{{variItem.title}}</text>
       <view class="cards____card___divider"></view>

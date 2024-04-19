@@ -4,6 +4,8 @@ const index_requestModule = require("../../utils/request")
 const annotataionUrl = "https://www.xaufe.edu.cn/xxgg1.htm"
 const annotataionElementsRegex = /<li><a href="(.+)" target="_blank" title="(.+)"><span class="date">(.+)<\/span>.+<\/a><\/li>/g
 
+let index_interstitialAd = null
+
 Page<{
   annotations: {
     url: string,
@@ -23,6 +25,17 @@ Page<{
    * Lifecycle function--Called when page load
    */
   async onLoad() {
+    if (wx.createInterstitialAd) {
+      index_interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-003fca38c0d5da84'
+      })
+      index_interstitialAd.onLoad(() => {})
+      index_interstitialAd.onError((err) => {
+        console.error('插屏广告加载失败', err)
+      })
+      index_interstitialAd.onClose(() => {})
+    }
+
     const res = await index_requestModule.request({
       url: annotataionUrl
     }, true, -1, {
@@ -41,6 +54,12 @@ Page<{
     this.setData({
       annotations: rst
     })
+
+    if (index_interstitialAd) {
+      index_interstitialAd.show().catch((err) => {
+        console.error('插屏广告显示失败', err)
+      })
+    }
   },
 
   /**

@@ -20,6 +20,7 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>
+  <ad unit-id="adunit-afab3ea0677060e6" />
   <view class="weui-footer weui-footer_fixed-bottom">
     <view class="weui-footer__text">©Copyright 2023-2024 智慧仙财。保留部分权利。</view>
     <view class="weui-footer__text">陕ICP备2020016655号-3X</view>

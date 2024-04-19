@@ -42,6 +42,8 @@ const emotions = new Map([...Object.entries({
   }
 })].sort((a, b) => Number.parseFloat(b[0]) - Number.parseFloat(a[0])))
 
+let gp_calc_videoAd = null
+
 Page<{
   tableData: any[],
   bestScores: any[],
@@ -99,6 +101,42 @@ Page<{
       mask: true
     })
 
+    let resolveRewardedVideoAd = null;
+    let rejectRewardedVideoAd = null;
+    let rewardedVideoAdPromise = new Promise((resolve, reject) => {
+      resolveRewardedVideoAd = resolve;
+      rejectRewardedVideoAd = reject;
+    })
+
+    if (wx.createRewardedVideoAd) {
+      gp_calc_videoAd = wx.createRewardedVideoAd({
+        adUnitId: 'adunit-ed5f1ef4469c9e69'
+      })
+      gp_calc_videoAd.onLoad(() => { })
+      gp_calc_videoAd.onError((err) => {
+        console.error('激励视频光告加载失败', err)
+      })
+      gp_calc_videoAd.onClose((res) => {
+        // 用户点击了【关闭广告】按钮
+        if (res && res.isEnded) {
+          resolveRewardedVideoAd && resolveRewardedVideoAd()
+        } else {
+          rejectRewardedVideoAd && rejectRewardedVideoAd()
+        }
+      })
+    }
+
+    if (gp_calc_videoAd) {
+      gp_calc_videoAd.show().catch(() => {
+        // 失败重试
+        gp_calc_videoAd.load()
+          .then(() => gp_calc_videoAd.show())
+          .catch(err => {
+            console.error('激励视频 广告显示失败', err)
+          })
+      })
+    }
+
     try {
       const cookieJar: Record<string, string> = gp_calc_cookieModule.plainToCookieJar(await gp_calc_jwglModule.getOrRequireTokenCookie(true, "/pages/utilities/gp_calc/gp_calc"))
       const result = await gp_calc_requestModule.request({
@@ -121,6 +159,18 @@ Page<{
         },
         dataType: 'json'
       }, true, 1, cookieJar)
+
+      try {
+        wx.hideLoading()
+        await rewardedVideoAdPromise
+      } catch {
+        wx.navigateBack();
+      } finally {
+        wx.showLoading({
+          title: '请稍候',
+          mask: true
+        })
+      }
 
       this.setData({
         tableData: result.data.items
