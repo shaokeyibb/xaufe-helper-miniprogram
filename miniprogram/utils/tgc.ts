@@ -1,5 +1,7 @@
 const jwglModule = require('../solutions/jwgl')
 const myModule = require('../solutions/my')
+const requestModule = require('request')
+const cookieJarModule = require('cookie')
 
 const tgcCookieRegex = /TGC=([a-zA-Z0-9\-]+);/g
 const tgcValidateHTMLRegex = /<title>登录成功<\/title>/g
@@ -42,21 +44,10 @@ export async function checkAndGetTGC(redirect: boolean = true, to: string | unde
 
 export async function logoutTGC() {
   const tgc = await checkAndGetTGCCookie();
-  const req = new Promise<void>((resolve, reject) => {
-    wx.request({
-      url: "https://cas.xaufe.edu.cn/logout",
-      dataType: "其他",
-      header: {
-        "Cookie": tgc
-      },
-      success() {
-        resolve()
-      },
-      fail(err) {
-        reject(err);
-      }
-    })
-  })
+  const req = requestModule.request({
+    url: "https://cas.xaufe.edu.cn/logout",
+    dataType: "其他"
+  }, true, -1, cookieJarModule.plainToCookieJar(tgc))
   const clr = clearTGCStorage()
   jwglModule.clearToken()
   myModule.clearToken()
@@ -71,21 +62,12 @@ async function getTGCStorage(): Promise<string> {
 }
 
 async function validateTGC(tgc: string): Promise<boolean> {
-  return new Promise<boolean>((resolve, reject) => {
-    wx.request({
-      url: "https://cas.xaufe.edu.cn/login",
-      dataType: "其他",
-      header: {
-        "Cookie": "TGC=" + tgc
-      },
-      success(res) {
-        resolve(new RegExp(tgcValidateHTMLRegex).test(res.data.toString()))
-      },
-      fail(err) {
-        reject(err);
-      }
-    })
-  })
+  return requestModule.request({
+    url: "https://cas.xaufe.edu.cn/login",
+    dataType: "其他"
+  }, true, -1, {
+    "TGC": tgc
+  }).then((res: { data: { toString: () => string } }) => new RegExp(tgcValidateHTMLRegex).test(res.data.toString()))
 }
 
 async function saveTGC(tgc: string) {

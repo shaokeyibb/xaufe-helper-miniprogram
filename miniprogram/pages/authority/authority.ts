@@ -10,21 +10,13 @@ const errorMessageRegex = /<p class="error-msg">(.+)<\/p>/g
 
 async function evaluateExecution(): Promise<string> {
   const session = await sessionModule.getSessionStorage();
-  const execution = await new Promise<string | undefined>((resolve) => {
-    wx.request<string>({
-      url: "https://cas.xaufe.edu.cn/login",
-      dataType: "其他",
-      header: {
-        "Cookie": "SESSION=" + session
-      },
-      success(res) {
-        resolve((new RegExp(executionCookieRegex).exec(res.data) ?? [])[1])
-      },
-      fail(err) {
-        throw err;
-      }
-    })
-  })
+  const execution = await requestModule.request({
+    url: "https://cas.xaufe.edu.cn/login",
+    dataType: "其他",
+  }, true, -1, {
+    "SESSION": session
+  }).then((res: { data: string; })=>(new RegExp(executionCookieRegex).exec(res.data) ?? [])[1])
+  .catch((err: any)=>{throw err})
 
   if (execution === undefined) {
     throw {

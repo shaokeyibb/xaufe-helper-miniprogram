@@ -1,3 +1,5 @@
+const requestModule = require('../utils/request')
+
 const sessionCookieRegex = /SESSION=([a-zA-Z0-9\-]+);/g
 
 export async function getSessionStorage(): Promise<string> {
@@ -26,17 +28,10 @@ async function clearSessionStorage(): Promise<WechatMiniprogram.GeneralCallbackR
 }
 
 async function requireSession(): Promise<string> {
-  const session = await new Promise<string | undefined>((resolve) => {
-    wx.request({
-      url: "https://cas.xaufe.edu.cn/login",
-      success(res) {
-        resolve((new RegExp(sessionCookieRegex).exec(res.header["Set-Cookie"]) ?? [])[1])
-      },
-      fail(err) {
-        throw err;
-      }
-    })
-  })
+  const session = await requestModule.request({
+    url: "https://cas.xaufe.edu.cn/login",
+  }).then((res: { header: { [x: string]: string; }; }) => (new RegExp(sessionCookieRegex).exec(res.header["Set-Cookie"]) ?? [])[1])
+    .catch((err: unknown) => { throw err });
 
   if (session === undefined) {
     throw {
