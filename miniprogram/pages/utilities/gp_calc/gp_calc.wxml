@@ -48,7 +48,7 @@
         </block>
       </view>
     </view>
-    <view class="generate-time-card weui-footer">
+    <view class="generate-time-card weui-footer weui-footer_fixed-bottom">
       <view class="weui-footer__text">数据截至 {{time}}，不包含未评价课程分数，结果仅供参考。</view>
     </view>
   </block>
