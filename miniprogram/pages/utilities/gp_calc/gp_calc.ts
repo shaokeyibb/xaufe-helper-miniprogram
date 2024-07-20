@@ -227,5 +227,27 @@ Page<{
     this.updateEmotion()
     this.updateBestScores(filter)
     this.updateWorstScores(filter)
-  }
+  },
+
+  onShareAppMessage(){
+    if(this.data.gpa != null){
+      return {
+        title: `我刚刚在“智慧仙财”小程序查询到我的绩点（${this.data.modes[this.data.modeIdx].name}）为 ${this.data.gpa}，你也来查查看吧~`
+      }
+    }
+    return {
+      title: "我刚刚在“智慧仙财”小程序查询了我的绩点（GPA），你也来查查看吧~"
+    }
+  },
+
+  onShareTimeline(){
+    if(this.data.gpa != null){
+      return {
+        title: `我刚刚在“智慧仙财”小程序查询到我的绩点（${this.data.modes[this.data.modeIdx].name}）为 ${this.data.gpa}，你也来查查看吧~`
+      }
+    }
+    return {
+      title: "我刚刚在“智慧仙财”小程序查询了我的绩点（GPA），你也来查查看吧~"
+    }
+  },
 })

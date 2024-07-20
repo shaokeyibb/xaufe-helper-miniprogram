@@ -149,5 +149,17 @@ Page<{
     } finally {
       wx.hideLoading()
     }
-  }
+  },
+
+  onShareAppMessage(){
+    return {
+      title: `我正在“智慧仙财”小程序查询我的课表，你也来试试看吧~`
+    }
+  },
+
+  onShareTimeline(){
+    return {
+      title: `我正在“智慧仙财”小程序查询我的课表，你也来试试看吧~`
+    }
+  },
 })

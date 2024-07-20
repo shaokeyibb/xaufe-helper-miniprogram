@@ -56,5 +56,12 @@ Page<{
         break
       }
     }
-  }
+  },
+
+  onShareAppMessage(){
+    return {
+      title: `我趣，我这学期竟然要上 ${this.data.data.kbList.length} 门课，你也来查查看吧~`,
+      path: "/pages/jwgl/schedule_new/schedule_new"
+    }
+  },
 })

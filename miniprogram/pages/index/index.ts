@@ -42,31 +42,11 @@ Page<{
       annotations: rst
     })
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady() {
+  
+  onShareAppMessage(){
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  async onShow() {
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload() {
-
+  onShareTimeline(){
   },
 
   openNews(event: any) {

@@ -44,5 +44,19 @@ Page<{
     wx.setClipboardData({
       data: event.currentTarget.dataset.url
     })
-  }
+  },
+
+  onShareAppMessage(){
+    return {
+      title: this.data.title!,
+      path: "/pages/index/news/news?url=" + encodeURI(this.data.url!) + "&title=" + encodeURI(this.data.title!) + "&date=" + encodeURI(this.data.date!)
+    }
+  },
+
+  onShareTimeline(){
+    return {
+      title: this.data.title!,
+      query: "url=" + encodeURI(this.data.url!) + "&title=" + encodeURI(this.data.title!) + "&date=" + encodeURI(this.data.date!)
+    }
+  },
 })

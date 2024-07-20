@@ -125,5 +125,11 @@ Page({
     wx.navigateTo({
       url: e.currentTarget.dataset.to
     })
-  }
+  },
+
+  onShareAppMessage(){
+    return {
+      path: "/pages/index/index"
+    }
+  },
 })

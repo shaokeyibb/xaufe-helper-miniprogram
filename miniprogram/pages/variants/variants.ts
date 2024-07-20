@@ -46,5 +46,11 @@ Page({
     wx.setNavigationBarTitle({
       title: '功能中心'
     })
-  }
+  },
+
+  onShareAppMessage(){
+    return {
+      path: "/pages/index/index"
+    }
+  },
 })

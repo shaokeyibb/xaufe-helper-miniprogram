@@ -25,5 +25,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '考试信息查询结果'
     })
-  }
+  },
+
+  onShareAppMessage(){
+    return {
+      title: `我趣，我这学期竟然要考 ${this.data.items.length} 门试，你也来查查看吧~`,
+      path: "/pages/jwgl/examing_new/examing_new"
+    }
+  },
 })
