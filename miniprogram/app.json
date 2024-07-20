@@ -4,9 +4,7 @@
     "pages/authority/authority",
     "pages/space/space",
     "pages/variants/variants",
-    "pages/jwgl/transcript/transcript",
     "pages/space/licenses/licenses",
-    "pages/jwgl/examing/examing",
     "pages/jwgl/schedule/schedule",
     "pages/index/news/news",
     "pages/index/news/err_internal_only",
@@ -18,7 +16,8 @@
     "pages/jwgl/examing_new/result",
     "pages/jwgl/schedule_new/schedule_new",
     "pages/jwgl/schedule_new/result",
-    "pages/fun/food_chooser/food_chooser"
+    "pages/fun/food_chooser/food_chooser",
+    "pages/fun/food_chooser/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

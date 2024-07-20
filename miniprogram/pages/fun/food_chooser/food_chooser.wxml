@@ -1,0 +1,61 @@
+<!--pages/fun/food_chooser.wxml-->
+<wxs module="wxs">
+  var getCanteen = function (campus, canteen) {
+    return canteen[campus.filter(
+      function (it) {
+        return it.checked
+      })[0].id]
+  }
+
+  module.exports = {
+    getCanteen: getCanteen
+  }
+</wxs>
+<view class="page">
+  <mp-form-page title="选择你所在的校区" wx:if="{{step == 0}}">
+    <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <mp-form>
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells weui-cells_radio">
+          <radio-group class="radio-group" bindchange="campusChange">
+            <label class="weui-cell weui-cell_active weui-check__label" wx:for="{{campus}}" wx:key="id">
+              <view class="weui-cell__bd">
+                <view>{{item.name}}</view>
+              </view>
+              <view class="weui-cell__ft">
+                <radio class="weui-check" value="{{item.id}}" />
+                <i class="weui-icon-checked"></i>
+              </view>
+            </label>
+          </radio-group>
+        </view>
+      </view>
+    </mp-form>
+    <view slot="button">
+      <button class="weui-btn" type="primary" bindtap="onNextStep">下一步</button>
+    </view>
+  </mp-form-page>
+  <mp-form-page title="选择你想前往的食堂" wx:if="{{step == 1}}">
+    <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <mp-form>
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells weui-cells_checkbox">
+          <checkbox-group bindchange="canteenChange">
+            <label class="weui-cell weui-cell_active weui-check__label {{item.disabled ? 'weui-cell_disabled' : ''}}" wx:for="{{wxs.getCanteen(campus, canteen)}}" wx:key="id">
+              <view class="weui-cell__hd">
+                <checkbox class="weui-check" value="{{item.id}}" checked="{{item.checked}}" disabled="{{item.disabled}}" />
+                <i class="weui-icon-checked"></i>
+              </view>
+              <view class="weui-cell__bd">
+                <view>{{item.name}}</view>
+              </view>
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </mp-form>
+    <view slot="button">
+      <button class="weui-btn" type="primary" bindtap="onNextStep">开始抽签</button>
+    </view>
+  </mp-form-page>
+</view>

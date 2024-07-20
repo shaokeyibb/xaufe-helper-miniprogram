@@ -35,6 +35,16 @@ Page({
             "url": "/pages/utilities/gp_calc/gp_calc"
           },
         ]
+      },
+      {
+        "title": "趣味功能",
+        "entries": [
+          {
+            "title": "财 er 今天吃什么（beta）",
+            "icon": "mdi-light:lightbulb-on",
+            "url": "/pages/fun/food_chooser/food_chooser"
+          }
+        ]
       }
     ]
   },

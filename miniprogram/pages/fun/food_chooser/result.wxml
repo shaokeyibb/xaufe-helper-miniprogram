@@ -1,0 +1,20 @@
+<!--pages/fun/food_chooser/result.wxml-->
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+  <view class="weui-bottom-fixed-opr-page">
+    <view class="weui-bottom-fixed-opr-page__content">
+      <view class="container">
+        <view wx:if="{{selected}}" class="selected">
+          <text class="selected__header">今天吃</text>
+          <text class="selected__content">{{selected}}</text>
+        </view>
+        <text wx:else class="rolling">{{rolling}}</text>
+      </view>
+    </view>
+    <view class="weui-bottom-fixed-opr-page__tool">
+      <view class="weui-bottom-fixed-opr">
+        <navigator wx:if="{{rolling}}" class="weui-btn weui-btn_primary" aria-role="button" bindtap="onStop">停止</navigator>
+        <navigator wx:else class="weui-btn weui-btn_default" aria-role="button" bindtap="onRoll">再抽一次</navigator>
+      </view>
+    </view>
+  </view>
+</view>

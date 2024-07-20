@@ -1,0 +1,19 @@
+/* pages/fun/food_chooser/result.wxss */
+.rolling {
+  font-size: xx-large;
+}
+
+.selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected .selected__header {
+  font-size: medium;
+  color: gray;
+}
+
+.selected .selected__content {
+  font-size: xx-large;
+}
