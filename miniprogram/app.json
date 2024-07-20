@@ -17,7 +17,8 @@
     "pages/jwgl/examing_new/examing_new",
     "pages/jwgl/examing_new/result",
     "pages/jwgl/schedule_new/schedule_new",
-    "pages/jwgl/schedule_new/result"
+    "pages/jwgl/schedule_new/result",
+    "pages/fun/food_chooser/food_chooser"
   ],
   "window": {
     "backgroundTextStyle": "light",
