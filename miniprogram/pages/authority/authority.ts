@@ -205,9 +205,9 @@ Page({
         title: "登录成功",
       })
 
-    } catch (err: unknown) {
+    } catch (err: any) {
       this.setData({
-        error: "发生了意料之外的错误，请联系开发者"
+        error: "发生了意料之外的错误，请联系开发者: " + err.errMsg
       })
       console.error(err)
     } finally {

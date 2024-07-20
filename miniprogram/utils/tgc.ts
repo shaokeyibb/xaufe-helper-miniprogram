@@ -29,7 +29,7 @@ export async function checkAndGetTGC(redirect: boolean = true, to: string | unde
       return tgc;
     }
     throw {
-      err_msg: "鉴权失败"
+      errMsg: "登录失败或用户凭证失效，请先登录"
     }
   } catch (e) {
     if (redirect)

@@ -110,9 +110,9 @@ Page({
         }))
       })
 
-    } catch (err: unknown) {
+    } catch (err: any) {
       this.setData({
-        error: "无法获取考试名称，请稍后再试；如此问题持续发生，请联系开发者"
+        error: "无法获取考试名称，请稍后再试；如此问题持续发生，请联系开发者：" + err.errMsg
       })
       console.error(err)
     } finally {
@@ -168,9 +168,9 @@ Page({
         res.eventChannel.emit('items', { items: items })
       })
 
-    } catch (err: unknown) {
+    } catch (err: any) {
       this.setData({
-        error: "发生了意料之外的错误，请联系开发者"
+        error: "发生了意料之外的错误，请联系开发者：" + err.errMsg
       })
       console.error(err)
     } finally {

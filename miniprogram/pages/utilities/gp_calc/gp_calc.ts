@@ -142,11 +142,11 @@ Page<{
       this.updateEmotion()
       this.updateBestScores()
       this.updateWorstScores()
-    } catch (e) {
+    } catch (err: any) {
       this.setData({
-        error: "发生了意料之外的错误，请联系开发者"
+        error: "发生了意料之外的错误，请联系开发者：" + err.errMsg
       })
-      throw e;
+      throw err;
     } finally {
       wx.hideLoading()
     }

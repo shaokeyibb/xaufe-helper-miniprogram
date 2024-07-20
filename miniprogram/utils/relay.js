@@ -12,7 +12,7 @@ export async function request(data) {
     }
     if (result.statusCode != 200) {
       throw {
-        err_msg: "内部错误"
+        errMsg: "内部错误"
       }
     }
     if (data.dataType === 'json') {
