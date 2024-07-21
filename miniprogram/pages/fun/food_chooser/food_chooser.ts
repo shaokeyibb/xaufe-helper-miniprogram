@@ -38,6 +38,18 @@ Page({
           disabled: false,
         },
         {
+          id: "3",
+          name: "天猫超市",
+          checked: true,
+          disabled: false,
+        },
+        {
+          id: "4",
+          name: "商业街",
+          checked: true,
+          disabled: false,
+        },
+        {
           id: "-1",
           name: "去校外吃",
           checked: true,
